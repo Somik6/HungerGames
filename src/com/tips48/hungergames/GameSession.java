@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.bukkit.entity.Player;
 
-import com.tips48.hungergames.config.HGConfig;
+import com.tips48.hungergames.config.ConfigManager;
 
 /**
  * Stores information about one session of
@@ -111,8 +111,8 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addPlayer(String player) {
-		if (HGConfig.MAX_PLAYERS != -1
-				&& players.size() == HGConfig.MAX_PLAYERS) {
+		if (ConfigManager.MAX_PLAYERS != -1
+				&& players.size() == ConfigManager.MAX_PLAYERS) {
 			return;
 		}
 		plugin.getBroadcaster().alertEveryone(
@@ -322,12 +322,12 @@ public class GameSession {
 		if (started) {
 			return false;
 		}
-		if (HGConfig.MIN_PLAYERS != -1 && players.size() < HGConfig.MIN_PLAYERS) {
+		if (ConfigManager.MIN_PLAYERS != -1 && players.size() < ConfigManager.MIN_PLAYERS) {
 			return false;
 		}
 		started = true;
 		plugin.getBroadcaster().alertEveryone("The game has been started!");
-		if (HGConfig.BROADCAST_PLAYERS_LEFT) {
+		if (ConfigManager.BROADCAST_PLAYERS_LEFT) {
 			taskId = plugin.getServer().getScheduler()
 					.scheduleSyncRepeatingTask(
 							plugin,
@@ -336,8 +336,8 @@ public class GameSession {
 									plugin.getBroadcaster()
 											.alertEveryoneOfRemainingPlayers();
 								}
-							}, HGConfig.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60,
-							HGConfig.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60);
+							}, ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60,
+							ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60);
 		}
 		return true;
 	}

@@ -8,7 +8,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.tips48.hungergames.HungerGames;
 
-public class HGConfig {
+public class ConfigManager {
 	/**
 	 * Minimum amount of players before the game is started
 	 */

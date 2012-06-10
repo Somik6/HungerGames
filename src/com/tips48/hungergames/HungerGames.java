@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.tips48.hungergames.commands.InfoCommand;
 import com.tips48.hungergames.commands.StartCommand;
 import com.tips48.hungergames.commands.StopCommand;
-import com.tips48.hungergames.config.HGConfig;
+import com.tips48.hungergames.config.ConfigManager;
 import com.tips48.hungergames.dynamic.ItemGiver;
 import com.tips48.hungergames.dynamic.MobSpawner;
 import com.tips48.hungergames.dynamic.RandomPotions;
@@ -75,7 +75,7 @@ public class HungerGames extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		HGConfig.init(this);
+		ConfigManager.init(this);
 		registerEvents();
 		registerCommands();
 	}
@@ -146,6 +146,11 @@ public class HungerGames extends JavaPlugin {
 		return broadcaster;
 	}
 
+	/**
+	 * Gets the RandomPotions
+	 * 
+	 * @return RandomPotions
+	 */
 	public RandomPotions getRandomPotions() {
 		return randomPotions;
 	}

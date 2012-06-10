@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.tips48.hungergames.GameSession;
 import com.tips48.hungergames.HungerGames;
-import com.tips48.hungergames.config.HGConfig;
+import com.tips48.hungergames.config.ConfigManager;
 
 /**
  * Listens for when a player has joined
@@ -41,7 +41,7 @@ public class PlayerJoinListener implements Listener {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
 		event.setJoinMessage("");
-		if (HGConfig.ADMINS.contains(player.getName())) {
+		if (ConfigManager.ADMINS.contains(player.getName())) {
 			session.addAdmin(player);
 		} else {
 			session.addPlayer(player);
