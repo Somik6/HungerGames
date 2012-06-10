@@ -62,18 +62,24 @@ public class RandomPotions {
 	 * @return Next effect
 	 */
 	private PotionEffect getEffect() {
+		int timeLength = (rand.nextInt(10) + 1) * 1000;
+		int amplifier = rand.nextInt(3) + 1;
+
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
-				return new PotionEffect(PotionEffectType.BLINDNESS, 1000, 2);
+				return new PotionEffect(PotionEffectType.BLINDNESS, timeLength,
+						amplifier);
 			} else {
-				return new PotionEffect(PotionEffectType.SPEED, 1000, 2);
+				return new PotionEffect(PotionEffectType.SPEED, timeLength,
+						amplifier);
 			}
 		} else {
 			if (rand.nextBoolean()) {
-				return new PotionEffect(PotionEffectType.SLOW, 1000, 2);
+				return new PotionEffect(PotionEffectType.SLOW, timeLength,
+						amplifier);
 			} else {
 				return new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE,
-						1000, 2);
+						timeLength, amplifier);
 			}
 		}
 	}
