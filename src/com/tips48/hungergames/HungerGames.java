@@ -29,7 +29,7 @@ public class HungerGames extends JavaPlugin {
 	private PlayerMoveListener moveListener;
 	private PlayerQuitListener quitListener;
 	private PlayerKickListener kickListener;
-	private PlayerRespawnListener deathListener;
+	private PlayerRespawnListener respawnListener;
 
 	private BlockBreakListener breakListener;
 	// Commands
@@ -54,7 +54,7 @@ public class HungerGames extends JavaPlugin {
 		moveListener = new PlayerMoveListener(this);
 		quitListener = new PlayerQuitListener(this);
 		kickListener = new PlayerKickListener(this);
-		deathListener = new PlayerRespawnListener(this);
+		respawnListener = new PlayerRespawnListener(this);
 
 		breakListener = new BlockBreakListener(this);
 
@@ -78,7 +78,7 @@ public class HungerGames extends JavaPlugin {
 		manager.registerEvents(moveListener, this);
 		manager.registerEvents(quitListener, this);
 		manager.registerEvents(kickListener, this);
-		manager.registerEvents(deathListener, this);
+		manager.registerEvents(respawnListener, this);
 
 		manager.registerEvents(breakListener, this);
 	}

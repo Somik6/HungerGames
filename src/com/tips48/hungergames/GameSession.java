@@ -347,10 +347,17 @@ public class GameSession {
 		for (Player p : plugin.getServer().getOnlinePlayers()) {
 			p.hidePlayer(player);
 		}
-		String name = player.getName();
+		final String name = player.getName();
 		players.remove(name);
 		deadPlayers.add(name);
-		plugin.getBroadcaster().alertEveryone(name + " has died!");
+		plugin.getServer().getScheduler()
+				.scheduleSyncDelayedTask(plugin, new Runnable() {
+					@Override
+					public void run() {
+						plugin.getBroadcaster().alertEveryone(
+								ChatColor.RED + name + " has died!");
+					}
+				}, 2);
 	}
 
 }
