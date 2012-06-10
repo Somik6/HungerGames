@@ -107,6 +107,7 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addPlayer(String player) {
+		plugin.getBroadcaster().alertEveryone(player + " has joined the Hunger Games!");
 		this.players.add(player);
 	}
 
@@ -343,6 +344,7 @@ public class GameSession {
 		String name = player.getName();
 		players.remove(name);
 		deadPlayers.add(name);
+		plugin.getBroadcaster().alertEveryone(name + " has died!");
 	}
 
 }

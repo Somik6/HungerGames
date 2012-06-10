@@ -7,11 +7,13 @@ import com.tips48.hungergames.commands.InfoCommand;
 import com.tips48.hungergames.commands.StartCommand;
 import com.tips48.hungergames.commands.StopCommand;
 import com.tips48.hungergames.dynamic.ItemGiver;
+import com.tips48.hungergames.dynamic.MobSpawner;
 import com.tips48.hungergames.listeners.PlayerDeathListener;
 import com.tips48.hungergames.listeners.PlayerJoinListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
 import com.tips48.hungergames.listeners.PlayerMoveListener;
 import com.tips48.hungergames.listeners.PlayerQuitListener;
+import com.tips48.hungergames.utils.Broadcaster;
 
 /**
  * Main class of the plugin
@@ -31,15 +33,19 @@ public class HungerGames extends JavaPlugin {
 	private StartCommand startCommand;
 	private StopCommand stopCommand;
 	private InfoCommand infoCommand;
-	// ItemGiver
+	// Various utils
 	private ItemGiver itemGiver;
-
+    private MobSpawner mobSpawner;
+    private Broadcaster broadcaster;
+    
 	@Override
 	public void onLoad() {
 		gameManager = new GameManager(this);
 		gameManager.createSession("Hunger Games", null, null);
 
 		itemGiver = new ItemGiver(this);
+		mobSpawner = new MobSpawner(this);
+		broadcaster = new Broadcaster(this);
 
 		joinListener = new PlayerJoinListener(this);
 		moveListener = new PlayerMoveListener(this);
@@ -99,6 +105,22 @@ public class HungerGames extends JavaPlugin {
 	 */
 	public ItemGiver getItemGiver() {
 		return itemGiver;
+	}
+	
+	/**
+	 * Gets the MobSpawner
+	 * @return MobSpawner
+	 */
+	public MobSpawner getMobSpawner() {
+		return mobSpawner;
+	}
+	
+	/**
+	 * Gets the Broadcaster
+	 * @return Broadcaster
+	 */
+	public Broadcaster getBroadcaster() {
+		return broadcaster;
 	}
 
 }
