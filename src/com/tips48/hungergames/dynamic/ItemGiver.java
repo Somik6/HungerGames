@@ -15,7 +15,6 @@ import com.tips48.hungergames.HungerGames;
  * 
  */
 public class ItemGiver {
-	@SuppressWarnings("unused")
 	private HungerGames plugin;
 	private int itemGiveChance;
 	private Random rand;
