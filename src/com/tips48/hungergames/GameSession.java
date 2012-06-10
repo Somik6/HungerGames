@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 /**
@@ -315,6 +316,7 @@ public class GameSession {
 			return false;
 		}
 		started = true;
+		plugin.getBroadcaster().alertEveryone(ChatColor.GREEN + "The game has been started!");
 		return true;
 	}
 
@@ -328,6 +330,7 @@ public class GameSession {
 			return false;
 		}
 		started = false;
+		plugin.getBroadcaster().alertEveryone(ChatColor.RED + "The game is over!");
 		return true;
 	}
 
