@@ -18,6 +18,7 @@ public class GameSession {
 	private final String name;
 
 	private final Set<String> players;
+	private final Set<String> deadPlayers;
 	private final Set<String> admins;
 
 	private boolean started;
@@ -32,6 +33,7 @@ public class GameSession {
 		this.plugin = plugin;
 		this.name = name;
 		this.players = new HashSet<String>();
+		this.deadPlayers = new HashSet<String>();
 		this.admins = new HashSet<String>();
 		this.started = false;
 	}
@@ -46,7 +48,50 @@ public class GameSession {
 	}
 
 	/**
-	 * Adds a player to the game
+	 * Gets all the admins in this session
+	 * 
+	 * @return Players in this session
+	 */
+	public Set<String> getAdmins() {
+		return admins;
+	}
+
+	/**
+	 * Gets all the players still alive in this session
+	 * 
+	 * @return Players in this session
+	 */
+	public Set<String> getPlayers() {
+		return players;
+	}
+
+	/**
+	 * Gets all the players who died in this session
+	 * 
+	 * @return Players in this session
+	 */
+	public Set<String> getDeadPlayers() {
+		return deadPlayers;
+	}
+
+	/**
+	 * Gets all the players in this session, dead or alive
+	 * 
+	 * @return Players in this session
+	 */
+	public Set<String> getAllPlayers() {
+		Set<String> result = new HashSet<String>();
+		for (String player : deadPlayers) {
+			result.add(player);
+		}
+		for (String player : players) {
+			result.add(player);
+		}
+		return result;
+	}
+
+	/**
+	 * Adds a player to the session
 	 * 
 	 * @param player
 	 *            Player to add
@@ -56,7 +101,7 @@ public class GameSession {
 	}
 
 	/**
-	 * Adds a player to the game
+	 * Adds a player to the session
 	 * 
 	 * @param player
 	 *            Player to add
@@ -66,7 +111,7 @@ public class GameSession {
 	}
 
 	/**
-	 * Removes a player to the game
+	 * Removes a player to the session
 	 * 
 	 * @param player
 	 *            Player to remove
@@ -76,7 +121,7 @@ public class GameSession {
 	}
 
 	/**
-	 * Removes a player to the game
+	 * Removes a player to the session
 	 * 
 	 * @param player
 	 *            Player to remove
@@ -295,6 +340,9 @@ public class GameSession {
 		for (Player p : plugin.getServer().getOnlinePlayers()) {
 			p.hidePlayer(player);
 		}
+		String name = player.getName();
+		players.remove(name);
+		deadPlayers.add(name);
 	}
 
 }

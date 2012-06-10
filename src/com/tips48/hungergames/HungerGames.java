@@ -3,6 +3,7 @@ package com.tips48.hungergames;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.tips48.hungergames.commands.InfoCommand;
 import com.tips48.hungergames.commands.StartCommand;
 import com.tips48.hungergames.commands.StopCommand;
 import com.tips48.hungergames.listeners.PlayerDeathListener;
@@ -28,6 +29,7 @@ public class HungerGames extends JavaPlugin {
 	// Commands
 	private StartCommand startCommand;
 	private StopCommand stopCommand;
+	private InfoCommand infoCommand;
 
 	@Override
 	public void onLoad() {
@@ -42,6 +44,7 @@ public class HungerGames extends JavaPlugin {
 
 		startCommand = new StartCommand(this);
 		stopCommand = new StopCommand(this);
+		infoCommand = new InfoCommand(this);
 	}
 
 	@Override
@@ -68,6 +71,7 @@ public class HungerGames extends JavaPlugin {
 	private void registerCommands() {
 		getCommand("hgstart").setExecutor(startCommand);
 		getCommand("hgstop").setExecutor(stopCommand);
+		getCommand("hginfo").setExecutor(infoCommand);
 	}
 
 	@Override
