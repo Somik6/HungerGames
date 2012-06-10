@@ -1,0 +1,286 @@
+package com.tips48.hungergames;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.bukkit.entity.Player;
+
+/**
+ * Stores information about one session of
+ * 
+ * @author tips48
+ * 
+ */
+public class GameSession {
+	private final HungerGames plugin;
+
+	private final String name;
+
+	private final Set<String> players;
+	private final Set<String> admins;
+	
+	private boolean started;
+
+	/**
+	 * Creates a new GameSession
+	 * 
+	 * @param plugin
+	 *            Plugin instance
+	 */
+	public GameSession(HungerGames plugin, String name) {
+		this.plugin = plugin;
+		this.name = name;
+		this.players = new HashSet<String>();
+		this.admins = new HashSet<String>();
+		this.started = false;
+	}
+
+	/**
+	 * Adds a player to the game
+	 * 
+	 * @param player
+	 *            Player to add
+	 */
+	public void addPlayer(Player player) {
+		addPlayer(player.getName());
+	}
+
+	/**
+	 * Adds a player to the game
+	 * 
+	 * @param player
+	 *            Player to add
+	 */
+	public void addPlayer(String player) {
+		this.players.add(player);
+	}
+
+	/**
+	 * Removes a player to the game
+	 * 
+	 * @param player
+	 *            Player to remove
+	 */
+	public void removePlayer(Player player) {
+		removePlayer(player.getName());
+	}
+
+	/**
+	 * Removes a player to the game
+	 * 
+	 * @param player
+	 *            Player to remove
+	 */
+	public void removePlayer(String player) {
+		this.players.remove(player);
+	}
+
+	/**
+	 * Adds a collection of players
+	 * 
+	 * @param players
+	 *            Players to add
+	 */
+	public void addAllPlayers(Collection<String> players) {
+		for (String player : players) {
+			addPlayer(player);
+		}
+	}
+
+	/**
+	 * Removes a collection of players
+	 * 
+	 * @param players
+	 *            Players to remove
+	 */
+	public void removeAllPlayers(Collection<String> players) {
+		for (String player : players) {
+			removePlayer(player);
+		}
+	}
+
+	/**
+	 * Adds an admin to the game
+	 * 
+	 * @param admin
+	 *            Player to add
+	 */
+	public void addAdmin(Player admin) {
+		addAdmin(admin.getName());
+	}
+
+	/**
+	 * Adds an admin to the game
+	 * 
+	 * @param admin
+	 *            Player to add
+	 */
+	public void addAdmin(String admin) {
+		this.admins.add(admin);
+	}
+
+	/**
+	 * Removes an admin to the game
+	 * 
+	 * @param admin
+	 *            Player to remove
+	 */
+	public void removeAdmin(Player admin) {
+		removeAdmin(admin.getName());
+	}
+
+	/**
+	 * Removes an admin to the game
+	 * 
+	 * @param admin
+	 *            Player to remove
+	 */
+	public void removeAdmin(String admin) {
+		this.admins.remove(admin);
+	}
+
+	/**
+	 * Adds a collection of admins
+	 * 
+	 * @param players
+	 *            Players to add
+	 */
+	public void addAllAdmins(Collection<String> players) {
+		for (String player : players) {
+			addAdmin(player);
+		}
+	}
+
+	/**
+	 * Removes a collection of admins
+	 * 
+	 * @param players
+	 *            Players to remove
+	 */
+	public void removeAllAdmins(Collection<String> players) {
+		for (String player : players) {
+			removeAdmin(player);
+		}
+	}
+
+	/**
+	 * Checks if a player is an admin in the session
+	 * 
+	 * @param player
+	 *            Player to check
+	 * @return If the player is in this session
+	 */
+	public boolean isAdmin(Player player) {
+		return isAdmin(player.getName());
+	}
+
+	/**
+	 * Checks if a player is an adminin the session
+	 * 
+	 * @param player
+	 *            Player to check
+	 * @return If the player is in this session
+	 */
+	public boolean isAdmin(String player) {
+		return admins.contains(player);
+	}
+
+	/**
+	 * Checks if a collection of players are admins in the session
+	 * 
+	 * @param players
+	 *            Players to check
+	 * @return If the players are in the session
+	 */
+	public boolean areAdmins(Collection<String> players) {
+		for (String player : players) {
+			if (!(isAdmin(player))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * Checks if a player is in the session
+	 * 
+	 * @param player
+	 *            Player to check
+	 * @return If the player is in this session
+	 */
+	public boolean isPlayer(Player player) {
+		return isPlayer(player.getName());
+	}
+
+	/**
+	 * Checks if a player is in the session
+	 * 
+	 * @param player
+	 *            Player to check
+	 * @return If the player is in this session
+	 */
+	public boolean isPlayer(String player) {
+		return players.contains(player);
+	}
+
+	/**
+	 * Checks if a collection of players are in the session
+	 * 
+	 * @param players
+	 *            Players to check
+	 * @return If the players are in the session
+	 */
+	public boolean arePlayers(Collection<String> players) {
+		for (String player : players) {
+			if (!(isPlayer(player))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * Gets if the session has been started
+	 * @return If the session has been started
+	 */
+	public boolean isStarted() {
+		return started;
+	}
+	
+	/**
+	 * Starts the session
+	 * @return Successful
+	 */
+	public boolean start() {
+		if (started) {
+			return false;
+		}
+		started = true;
+		return true;
+	}
+	
+	/**
+	 * Stops the session
+	 * @return Successful
+	 */
+	public boolean stop() {
+		if (!(started)) {
+			return false;
+		}
+		started = false;
+		return true;
+	}
+	
+	/**
+	 * Called when a player is killed
+	 * @param player Player that was killed
+	 */
+	public void onPlayerKilled(Player player) {
+		player.setAllowFlight(true);
+		for (Player p : plugin.getServer().getOnlinePlayers()) {
+			p.hidePlayer(player);
+		}
+	}
+
+}

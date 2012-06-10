@@ -3,34 +3,31 @@ package com.tips48.hungergames.listeners;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 
 import com.tips48.hungergames.GameSession;
 import com.tips48.hungergames.HungerGames;
-import com.tips48.hungergames.utils.EventUtils;
 
 /**
- * Listens for when a player has moved
+ * Listens for when a player has kicked
  * 
  * @author tips48
  */
-public class PlayerMoveListener implements Listener {
+public class PlayerKickListener implements Listener {
 	private final HungerGames plugin;
 
 	/**
-	 * Creates a new PlayerMoveListener
+	 * Creates a new PlayerKickListener
 	 * @param plugin Plugin instance
 	 */
-	public PlayerMoveListener(HungerGames plugin) {
+	public PlayerKickListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
 	
 	@EventHandler(ignoreCancelled = true)
-	public void handle(PlayerMoveEvent event) {
+	public void handle(PlayerKickEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
-		if ((!(session.isStarted())) && session.isPlayer(player) && EventUtils.isCoarse(event)) {
-			event.setCancelled(true);
-		}
+		session.removePlayer(player);
 	}
 }
