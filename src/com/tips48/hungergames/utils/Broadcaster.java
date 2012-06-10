@@ -120,6 +120,6 @@ public class Broadcaster {
 	 * @return Styled message
 	 */
 	public String styleMessage(String message) {
-		return ("[" + ChatColor.GOLD + "HG" + ChatColor.WHITE + "] " + message);
+		return ("[" + ChatColor.RED + "HG" + ChatColor.WHITE + "] " + message);
 	}
 }

@@ -40,6 +40,7 @@ public class PlayerJoinListener implements Listener {
 	public void handle(PlayerJoinEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
+		event.setJoinMessage("");
 		if (HGConfig.ADMINS.contains(player.getName())) {
 			session.addAdmin(player);
 		} else {

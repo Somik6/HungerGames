@@ -12,6 +12,7 @@ import com.tips48.hungergames.HungerGames;
  * Listens for when a player has quit
  * 
  * @author tips48
+ * @author steaks4uce
  */
 public class PlayerQuitListener implements Listener {
 	private final HungerGames plugin;
@@ -37,6 +38,6 @@ public class PlayerQuitListener implements Listener {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
 		session.removePlayer(player);
+		plugin.getBroadcaster().alertEveryone(player.getName() + " has quit the Hunger Games!");
 	}
-
 }
