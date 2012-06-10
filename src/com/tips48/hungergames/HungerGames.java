@@ -10,6 +10,7 @@ import com.tips48.hungergames.config.HGConfig;
 import com.tips48.hungergames.dynamic.ItemGiver;
 import com.tips48.hungergames.dynamic.MobSpawner;
 import com.tips48.hungergames.listeners.BlockBreakListener;
+import com.tips48.hungergames.listeners.PlayerChatListener;
 import com.tips48.hungergames.listeners.PlayerRespawnListener;
 import com.tips48.hungergames.listeners.PlayerJoinListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
@@ -31,6 +32,7 @@ public class HungerGames extends JavaPlugin {
 	private PlayerQuitListener quitListener;
 	private PlayerKickListener kickListener;
 	private PlayerRespawnListener respawnListener;
+	private PlayerChatListener chatListener;
 
 	private BlockBreakListener breakListener;
 	// Commands
@@ -56,6 +58,7 @@ public class HungerGames extends JavaPlugin {
 		quitListener = new PlayerQuitListener(this);
 		kickListener = new PlayerKickListener(this);
 		respawnListener = new PlayerRespawnListener(this);
+		chatListener = new PlayerChatListener(this);
 
 		breakListener = new BlockBreakListener(this);
 
@@ -81,6 +84,7 @@ public class HungerGames extends JavaPlugin {
 		manager.registerEvents(quitListener, this);
 		manager.registerEvents(kickListener, this);
 		manager.registerEvents(respawnListener, this);
+		manager.registerEvents(chatListener, this);
 
 		manager.registerEvents(breakListener, this);
 	}
