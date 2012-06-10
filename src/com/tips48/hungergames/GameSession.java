@@ -32,21 +32,13 @@ public class GameSession {
 	 * @param plugin
 	 *            Plugin instance
 	 */
-	public GameSession(final HungerGames plugin, String name) {
+	public GameSession(HungerGames plugin, String name) {
 		this.plugin = plugin;
 		this.name = name;
 		this.players = new HashSet<String>();
 		this.deadPlayers = new HashSet<String>();
 		this.admins = new HashSet<String>();
 		this.started = false;
-
-		taskId = plugin.getServer().getScheduler()
-				.scheduleSyncRepeatingTask(plugin, new Runnable() {
-					public void run() {
-						plugin.getBroadcaster()
-								.alertEveryoneOfRemainingPlayers();
-					}
-				}, 5 * 20 * 60, 5 * 20 * 60);
 	}
 
 	/**
@@ -328,6 +320,13 @@ public class GameSession {
 		started = true;
 		plugin.getBroadcaster().alertEveryone(
 				ChatColor.GREEN + "The game has been started!");
+		taskId = plugin.getServer().getScheduler()
+				.scheduleSyncRepeatingTask(plugin, new Runnable() {
+					public void run() {
+						plugin.getBroadcaster()
+								.alertEveryoneOfRemainingPlayers();
+					}
+				}, 5 * 20 * 60, 5 * 20 * 60);
 		return true;
 	}
 
