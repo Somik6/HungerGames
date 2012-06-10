@@ -18,12 +18,14 @@ public class PlayerKickListener implements Listener {
 
 	/**
 	 * Creates a new PlayerKickListener
-	 * @param plugin Plugin instance
+	 * 
+	 * @param plugin
+	 *            Plugin instance
 	 */
 	public PlayerKickListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerKickEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

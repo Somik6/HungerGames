@@ -3,6 +3,11 @@ package com.tips48.hungergames.utils;
 import org.bukkit.Location;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+/**
+ * Utility methods for events
+ * 
+ * @author tips48
+ */
 public class EventUtils {
 
 	/**

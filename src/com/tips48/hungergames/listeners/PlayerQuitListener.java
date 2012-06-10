@@ -15,15 +15,17 @@ import com.tips48.hungergames.HungerGames;
  */
 public class PlayerQuitListener implements Listener {
 	private final HungerGames plugin;
-	
+
 	/**
 	 * Creates a new PlayerQuitListener
-	 * @param plugin Plugin instance
+	 * 
+	 * @param plugin
+	 *            Plugin instance
 	 */
 	public PlayerQuitListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerQuitEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

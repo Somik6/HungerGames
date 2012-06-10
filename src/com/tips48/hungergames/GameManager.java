@@ -48,10 +48,12 @@ public class GameManager {
 
 	/**
 	 * Gets the default game session
+	 * 
 	 * @return Default game session
 	 */
 	public GameSession getGameSession() {
-		return sessions.iterator().next(); // Temporary until support for multiple games are added
+		return sessions.iterator().next(); // Temporary until support for
+											// multiple games are added
 	}
 
 }

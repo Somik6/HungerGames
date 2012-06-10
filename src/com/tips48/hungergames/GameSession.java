@@ -19,7 +19,7 @@ public class GameSession {
 
 	private final Set<String> players;
 	private final Set<String> admins;
-	
+
 	private boolean started;
 
 	/**
@@ -201,7 +201,7 @@ public class GameSession {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Checks if a player is in the session
 	 * 
@@ -239,17 +239,19 @@ public class GameSession {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Gets if the session has been started
+	 * 
 	 * @return If the session has been started
 	 */
 	public boolean isStarted() {
 		return started;
 	}
-	
+
 	/**
 	 * Starts the session
+	 * 
 	 * @return Successful
 	 */
 	public boolean start() {
@@ -259,9 +261,10 @@ public class GameSession {
 		started = true;
 		return true;
 	}
-	
+
 	/**
 	 * Stops the session
+	 * 
 	 * @return Successful
 	 */
 	public boolean stop() {
@@ -271,10 +274,12 @@ public class GameSession {
 		started = false;
 		return true;
 	}
-	
+
 	/**
 	 * Called when a player is killed
-	 * @param player Player that was killed
+	 * 
+	 * @param player
+	 *            Player that was killed
 	 */
 	public void onPlayerKilled(Player player) {
 		player.setAllowFlight(true);

@@ -10,19 +10,22 @@ import com.tips48.hungergames.HungerGames;
 
 /**
  * Listens for when a player has joined
+ * 
  * @author tips48
  */
 public class PlayerJoinListener implements Listener {
 	private final HungerGames plugin;
-	
+
 	/**
 	 * Creates a new PlayerJoinListener
-	 * @param plugin Plugin instance
+	 * 
+	 * @param plugin
+	 *            Plugin instance
 	 */
 	public PlayerJoinListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerJoinEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

@@ -19,17 +19,20 @@ public class PlayerMoveListener implements Listener {
 
 	/**
 	 * Creates a new PlayerMoveListener
-	 * @param plugin Plugin instance
+	 * 
+	 * @param plugin
+	 *            Plugin instance
 	 */
 	public PlayerMoveListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerMoveEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
-		if ((!(session.isStarted())) && session.isPlayer(player) && EventUtils.isCoarse(event)) {
+		if ((!(session.isStarted())) && session.isPlayer(player)
+				&& EventUtils.isCoarse(event)) {
 			event.setCancelled(true);
 		}
 	}

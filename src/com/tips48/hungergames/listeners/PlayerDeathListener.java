@@ -18,12 +18,14 @@ public class PlayerDeathListener implements Listener {
 
 	/**
 	 * Creates a new PlayerDeathListener
-	 * @param plugin Plugin instance
+	 * 
+	 * @param plugin
+	 *            Plugin instance
 	 */
 	public PlayerDeathListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerDeathEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

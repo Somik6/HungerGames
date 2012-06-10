@@ -4,22 +4,22 @@ authors: [tips48, steaks4uce]
 main: com.tips48.hungergames.HungerGames
 prefix: HG
 commands:
-    start:
+    hgstart:
         description: Manually starts the server
         permission: HungerGames.start
         permission-message: You do not have permission!
         usage: Wrong syntax! Usage: /<command>
-    stop:
+    hgstop:
         description: Manually stops the server
         permission: HungerGames.stop
         permission-message: You do not have permission!
         usage: Wrong syntax! Usage: /<command>
 permissions:
     HungerGames.start:
-        description: Access to the /start command
+        description: Access to the /hgstart command
         default: false
     HungerGames.stop:
-        description: Access to the /stop command
+        description: Access to the /hgstop command
         default: false
     HungerGames.*:
         description: Access to all the Hunger Games commands
