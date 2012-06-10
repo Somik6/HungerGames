@@ -26,6 +26,12 @@ public class PlayerQuitListener implements Listener {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Handles a PlayerQuitEvent
+	 * 
+	 * @param event
+	 *            Event
+	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerQuitEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

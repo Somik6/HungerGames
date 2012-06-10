@@ -26,6 +26,12 @@ public class PlayerDeathListener implements Listener {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Handles a PlayerDeathEvent
+	 * 
+	 * @param event
+	 *            Event
+	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerDeathEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

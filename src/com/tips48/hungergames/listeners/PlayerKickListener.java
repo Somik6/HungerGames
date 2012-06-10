@@ -26,6 +26,12 @@ public class PlayerKickListener implements Listener {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Handles a PlayerKickEvent
+	 * 
+	 * @param event
+	 *            Event
+	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerKickEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

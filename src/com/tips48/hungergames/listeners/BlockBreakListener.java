@@ -10,20 +10,29 @@ import com.tips48.hungergames.HungerGames;
 
 /**
  * Listens for when a block is broken
+ * 
  * @author tips48
- *
+ * 
  */
 public class BlockBreakListener implements Listener {
 	private final HungerGames plugin;
-	
+
 	/**
 	 * Creates a new BlockBreakListener
-	 * @param plugin Plugin instance
+	 * 
+	 * @param plugin
+	 *            Plugin instance
 	 */
 	public BlockBreakListener(HungerGames plugin) {
 		this.plugin = plugin;
 	}
-	
+
+	/**
+	 * Handles a BlockBreakEvent
+	 * 
+	 * @param event
+	 *            Event
+	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(BlockBreakEvent event) {
 		Player player = event.getPlayer();

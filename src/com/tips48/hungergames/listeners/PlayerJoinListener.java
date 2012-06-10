@@ -29,6 +29,12 @@ public class PlayerJoinListener implements Listener {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Handles a PlayerJoinEvent
+	 * 
+	 * @param event
+	 *            Event
+	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerJoinEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();

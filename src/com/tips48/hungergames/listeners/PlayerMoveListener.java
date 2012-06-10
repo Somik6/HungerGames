@@ -28,6 +28,12 @@ public class PlayerMoveListener implements Listener {
 		this.plugin = plugin;
 	}
 
+	/**
+	 * Handles a PlayerMoveEvent
+	 * 
+	 * @param event
+	 *            Event
+	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerMoveEvent event) {
 		GameSession session = plugin.getGameManager().getGameSession();
