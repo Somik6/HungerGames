@@ -2,68 +2,124 @@ package com.tips48.hungergames.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
-import com.tips48.hungergames.GameManager;
 import com.tips48.hungergames.GameSession;
 import com.tips48.hungergames.HungerGames;
 
+/**
+ * Handles broadcasting information to all the players
+ * 
+ * @author tips48
+ * 
+ */
 public class Broadcaster {
-	private Server theServer;
-	private GameSession gameSession;
-	private GameManager gameManager;
 	private HungerGames plugin;
 
+	/**
+	 * Creates a new Broadcaster
+	 * 
+	 * @param plugin
+	 *            Plugin instance
+	 */
 	public Broadcaster(HungerGames plugin) {
 		this.plugin = plugin;
-		this.theServer = Bukkit.getServer();
-		this.gameManager = this.plugin.getGameManager();
-		this.gameSession = this.gameManager.getGameSession();
 	}
 
+	/**
+	 * Alerts all the players of a session of the remaining players
+	 */
 	public void alertEveryoneOfRemainingPlayers() {
-		String topLine = "Only "
-				+ plugin.getGameManager().getGameSession().getPlayers().size()
+		GameSession session = plugin.getGameManager().getGameSession();
+		String topLine = ChatColor.RED + "Only " + session.getPlayers().size()
 				+ " players remain!";
-		String bottomLine = "Including: ";
-		boolean skip = true;
 
-		for (String player : plugin.getGameManager().getGameSession()
-				.getPlayers()) {
-			bottomLine += (skip ? "" : " & " + player);
-			skip = false;
-		}
-
-		for (Player player : theServer.getOnlinePlayers()) {
-			player.sendMessage(topLine);
-			player.sendMessage(bottomLine);
-		}
-	}
-
-	public void alertPlayers(String theMessage) {
-		for (Player player : theServer.getOnlinePlayers()) {
-			if (gameSession.isPlayer(player)) {
-				player.sendMessage(styleMessage(theMessage));
+		String bottomLine = ChatColor.BLUE + "They are: "
+				+ Utils.makeReadable(session.getPlayers());
+		for (String player : session.getAllPlayers()) {
+			Player p = Bukkit.getPlayer(player);
+			if (p == null) {
+				continue;
 			}
+			p.sendMessage(styleMessage(topLine));
+			p.sendMessage(styleMessage(bottomLine));
 		}
-	}
-
-	public void alertAdmins(String theMessage) {
-		for (Player player : theServer.getOnlinePlayers()) {
-			if (gameSession.isAdmin(player)) {
-				player.sendMessage(styleMessage(theMessage));
+		for (String player : session.getAdmins()) {
+			Player p = Bukkit.getPlayer(player);
+			if (p == null) {
+				continue;
 			}
+			p.sendMessage(styleMessage(topLine));
+			p.sendMessage(styleMessage(bottomLine));
 		}
 	}
 
-	public void alertEveryone(String theMessage) {
-		for (Player player : theServer.getOnlinePlayers()) {
-			player.sendMessage(styleMessage(theMessage));
+	/**
+	 * Alerts all the players of a message
+	 * 
+	 * @param message
+	 *            Message to be sent
+	 */
+	public void alertPlayers(String message) {
+		GameSession session = plugin.getGameManager().getGameSession();
+		for (String player : session.getPlayers()) {
+			Player p = plugin.getServer().getPlayer(player);
+			if (p == null) {
+				continue;
+			}
+			p.sendMessage(styleMessage(message));
 		}
 	}
 
-	public String styleMessage(String theMessage) {
-		return ("[" + ChatColor.GOLD + "HG" + ChatColor.WHITE + "] " + theMessage);
+	/**
+	 * Alerts all the admins of a message
+	 * 
+	 * @param message
+	 *            Message to be sent
+	 */
+	public void alertAdmins(String message) {
+		GameSession session = plugin.getGameManager().getGameSession();
+		for (String player : session.getAdmins()) {
+			Player p = plugin.getServer().getPlayer(player);
+			if (p == null) {
+				continue;
+			}
+			p.sendMessage(styleMessage(message));
+		}
+	}
+
+	/**
+	 * Alerts all the players and administrators of a message
+	 * 
+	 * @param message
+	 *            Message to be sent
+	 */
+	public void alertEveryone(String message) {
+		GameSession session = plugin.getGameManager().getGameSession();
+		for (String player : session.getAllPlayers()) {
+			Player p = plugin.getServer().getPlayer(player);
+			if (p == null) {
+				continue;
+			}
+			p.sendMessage(styleMessage(message));
+		}
+		for (String player : session.getAdmins()) {
+			Player p = plugin.getServer().getPlayer(player);
+			if (p == null) {
+				continue;
+			}
+			p.sendMessage(styleMessage(message));
+		}
+	}
+
+	/**
+	 * Styles a message
+	 * 
+	 * @param message
+	 *            Message to style
+	 * @return Styled message
+	 */
+	public String styleMessage(String message) {
+		return ("[" + ChatColor.GOLD + "HG" + ChatColor.WHITE + "] " + message);
 	}
 }

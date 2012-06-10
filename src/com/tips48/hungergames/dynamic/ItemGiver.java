@@ -8,6 +8,12 @@ import org.bukkit.inventory.ItemStack;
 
 import com.tips48.hungergames.HungerGames;
 
+/**
+ * Randomly gives items to players
+ * 
+ * @author tips48
+ * 
+ */
 public class ItemGiver {
 	@SuppressWarnings("unused")
 	private HungerGames plugin;
