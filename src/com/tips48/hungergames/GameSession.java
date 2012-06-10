@@ -112,7 +112,8 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addPlayer(String player) {
-		if (HGConfig.MAX_PLAYERS != -1 && players.size() == HGConfig.MAX_PLAYERS) {
+		if (HGConfig.MAX_PLAYERS != -1
+				&& players.size() == HGConfig.MAX_PLAYERS) {
 			return;
 		}
 		plugin.getBroadcaster().alertEveryone(
@@ -381,7 +382,7 @@ public class GameSession {
 					@Override
 					public void run() {
 						plugin.getBroadcaster().alertEveryone(
-								ChatColor.RED + name + " has died!");
+								name + " has died!");
 						plugin.getBroadcaster()
 								.alertEveryoneOfRemainingPlayers();
 						checkStatus();
