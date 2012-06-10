@@ -1,6 +1,5 @@
 package com.tips48.hungergames.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -46,11 +45,9 @@ public class InfoCommand implements CommandExecutor {
 		if (dead.isEmpty()) {
 			dead = "None";
 		}
-		sender.sendMessage(ChatColor.GREEN + session.getName());
-		sender.sendMessage(ChatColor.BLUE + "Admins: " + ChatColor.GREEN
-				+ admins);
-		sender.sendMessage(ChatColor.BLUE + "Players: " + ChatColor.GREEN
-				+ alive + ", " + ChatColor.RED + dead);
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(session.getName()));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Admins: " + admins));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Players: " + alive + ", " + dead));
 		return true;
 	}
 

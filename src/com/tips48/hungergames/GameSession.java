@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import com.tips48.hungergames.config.HGConfig;
@@ -327,8 +326,7 @@ public class GameSession {
 			return false;
 		}
 		started = true;
-		plugin.getBroadcaster().alertEveryone(
-				ChatColor.GREEN + "The game has been started!");
+		plugin.getBroadcaster().alertEveryone("The game has been started!");
 		if (HGConfig.BROADCAST_PLAYERS_LEFT) {
 			taskId = plugin.getServer().getScheduler()
 					.scheduleSyncRepeatingTask(
@@ -354,8 +352,7 @@ public class GameSession {
 			return false;
 		}
 		started = false;
-		plugin.getBroadcaster().alertEveryone(
-				ChatColor.RED + "The game is over!");
+		plugin.getBroadcaster().alertEveryone("The game is over!");
 		if (taskId != -1) {
 			plugin.getServer().getScheduler().cancelTask(taskId);
 			taskId = -1;

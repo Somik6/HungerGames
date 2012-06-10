@@ -1,6 +1,5 @@
 package com.tips48.hungergames.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,7 +32,7 @@ public class StopCommand implements CommandExecutor {
 			return false;
 		}
 		if (!(plugin.getGameManager().getGameSession().stop())) {
-			sender.sendMessage(ChatColor.RED + "Error stopping the session!");
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("Failed to stop the game!"));
 		}
 		return true;
 	}

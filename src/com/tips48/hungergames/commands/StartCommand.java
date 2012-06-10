@@ -1,6 +1,5 @@
 package com.tips48.hungergames.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,7 +31,7 @@ public class StartCommand implements CommandExecutor {
 			return false;
 		}
 		if (!(plugin.getGameManager().getGameSession().start())) {
-			sender.sendMessage(ChatColor.RED + "Error starting the session!");
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("Failed to start the game!"));
 		}
 		return true;
 	}
