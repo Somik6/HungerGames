@@ -47,10 +47,10 @@ public class InfoCommand implements CommandExecutor {
 			dead = "None";
 		}
 		sender.sendMessage(ChatColor.GREEN + session.getName());
-		sender.sendMessage(ChatColor.BLUE + "Admins: " +ChatColor.GREEN + admins);
+		sender.sendMessage(ChatColor.BLUE + "Admins: " + ChatColor.GREEN
+				+ admins);
 		sender.sendMessage(ChatColor.BLUE + "Players: " + ChatColor.GREEN
-				+ alive + ", "
-				+ ChatColor.RED + dead);
+				+ alive + ", " + ChatColor.RED + dead);
 		return true;
 	}
 

@@ -35,9 +35,9 @@ public class HungerGames extends JavaPlugin {
 	private InfoCommand infoCommand;
 	// Various utils
 	private ItemGiver itemGiver;
-    private MobSpawner mobSpawner;
-    private Broadcaster broadcaster;
-    
+	private MobSpawner mobSpawner;
+	private Broadcaster broadcaster;
+
 	@Override
 	public void onLoad() {
 		gameManager = new GameManager(this);
@@ -106,17 +106,19 @@ public class HungerGames extends JavaPlugin {
 	public ItemGiver getItemGiver() {
 		return itemGiver;
 	}
-	
+
 	/**
 	 * Gets the MobSpawner
+	 * 
 	 * @return MobSpawner
 	 */
 	public MobSpawner getMobSpawner() {
 		return mobSpawner;
 	}
-	
+
 	/**
 	 * Gets the Broadcaster
+	 * 
 	 * @return Broadcaster
 	 */
 	public Broadcaster getBroadcaster() {

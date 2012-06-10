@@ -107,7 +107,8 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addPlayer(String player) {
-		plugin.getBroadcaster().alertEveryone(player + " has joined the Hunger Games!");
+		plugin.getBroadcaster().alertEveryone(
+				player + " has joined the Hunger Games!");
 		this.players.add(player);
 	}
 
