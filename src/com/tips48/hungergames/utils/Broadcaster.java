@@ -31,10 +31,10 @@ public class Broadcaster {
 	 */
 	public void alertEveryoneOfRemainingPlayers() {
 		GameSession session = plugin.getGameManager().getGameSession();
-		String topLine = ChatColor.RED + "Only " + session.getPlayers().size()
+		String topLine = "Only " + session.getPlayers().size()
 				+ " players remain!";
 
-		String bottomLine = ChatColor.BLUE + "They are: "
+		String bottomLine = "They are: "
 				+ Utils.makeReadable(session.getPlayers());
 		for (String player : session.getAllPlayers()) {
 			Player p = Bukkit.getPlayer(player);
