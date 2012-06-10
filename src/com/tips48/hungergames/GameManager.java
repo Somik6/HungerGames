@@ -44,6 +44,7 @@ public class GameManager {
 		if (players != null) {
 			session.addAllPlayers(admins);
 		}
+		sessions.add(session);
 	}
 
 	/**

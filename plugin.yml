@@ -8,22 +8,19 @@ commands:
         description: Manually starts the server
         permission: HungerGames.start
         permission-message: You do not have permission!
-        usage: Wrong syntax! Usage: /<command>
+        usage: Wrong syntax! Try /<command>
     hgstop:
         description: Manually stops the server
         permission: HungerGames.stop
         permission-message: You do not have permission!
-        usage: Wrong syntax! Usage: /<command>
+        usage: Wrong syntax! Try /<command>
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command
-        default: false
     HungerGames.stop:
         description: Access to the /hgstop command
-        default: false
     HungerGames.*:
         description: Access to all the Hunger Games commands
-        default: false
         children:
             HungerGames.start: true
             HungerGames.stop: true

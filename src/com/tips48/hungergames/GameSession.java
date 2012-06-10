@@ -35,9 +35,10 @@ public class GameSession {
 		this.admins = new HashSet<String>();
 		this.started = false;
 	}
-	
+
 	/**
 	 * Gets the name of this session
+	 * 
 	 * @return Name
 	 */
 	public String getName() {

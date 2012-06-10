@@ -1,5 +1,6 @@
 package com.tips48.hungergames.listeners;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,6 +34,8 @@ public class PlayerMoveListener implements Listener {
 		Player player = event.getPlayer();
 		if ((!(session.isStarted())) && session.isPlayer(player)
 				&& EventUtils.isCoarse(event)) {
+			Location from = event.getFrom();
+			player.teleport(from);
 			event.setCancelled(true);
 		}
 	}

@@ -25,7 +25,7 @@ public class EventUtils {
 		double fromZ = from.getZ();
 		double toX = to.getX();
 		double toZ = to.getZ();
-		return fromX == toX && fromZ == toZ;
+		return fromX  != toX && fromZ  != toZ;
 	}
 
 }

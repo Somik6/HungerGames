@@ -1,5 +1,6 @@
 package com.tips48.hungergames.listeners;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,6 +32,7 @@ public class PlayerJoinListener implements Listener {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
 		session.addPlayer(player);
+		player.teleport(new Location(player.getWorld(), 0, player.getWorld().getHighestBlockYAt(0, 0), 0)); // TODO replace with arena locations
 	}
 
 }
