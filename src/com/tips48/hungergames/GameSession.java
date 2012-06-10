@@ -316,7 +316,8 @@ public class GameSession {
 			return false;
 		}
 		started = true;
-		plugin.getBroadcaster().alertEveryone(ChatColor.GREEN + "The game has been started!");
+		plugin.getBroadcaster().alertEveryone(
+				ChatColor.GREEN + "The game has been started!");
 		return true;
 	}
 
@@ -330,7 +331,8 @@ public class GameSession {
 			return false;
 		}
 		started = false;
-		plugin.getBroadcaster().alertEveryone(ChatColor.RED + "The game is over!");
+		plugin.getBroadcaster().alertEveryone(
+				ChatColor.RED + "The game is over!");
 		return true;
 	}
 
