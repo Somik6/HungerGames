@@ -1,11 +1,11 @@
-package com.hungergames.hg.dynamic;
+package com.tips48.hungergames.dynamic;
 
 import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
-import com.hungergames.hg.HungerGames;
+import com.tips48.hungergames.HungerGames;
 
 /**
  * Randomly spawns mobs near a player

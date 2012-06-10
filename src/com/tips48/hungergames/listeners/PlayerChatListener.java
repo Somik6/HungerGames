@@ -1,10 +1,10 @@
-package com.hungergames.hg.listeners;
+package com.tips48.hungergames.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 
-import com.hungergames.hg.HungerGames;
+import com.tips48.hungergames.HungerGames;
 
 public class PlayerChatListener implements Listener {
 	private HungerGames plugin;

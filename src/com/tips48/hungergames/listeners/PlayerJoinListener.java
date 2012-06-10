@@ -1,4 +1,4 @@
-package com.hungergames.hg.listeners;
+package com.tips48.hungergames.listeners;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -8,9 +8,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.hungergames.hg.GameSession;
-import com.hungergames.hg.HungerGames;
-import com.hungergames.hg.config.HGConfig;
+import com.tips48.hungergames.GameSession;
+import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.config.HGConfig;
 
 /**
  * Listens for when a player has joined

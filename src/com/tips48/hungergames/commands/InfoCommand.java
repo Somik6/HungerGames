@@ -1,12 +1,12 @@
-package com.hungergames.hg.commands;
+package com.tips48.hungergames.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.hungergames.hg.GameSession;
-import com.hungergames.hg.HungerGames;
-import com.hungergames.hg.utils.Utils;
+import com.tips48.hungergames.GameSession;
+import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.utils.Utils;
 
 /**
  * Handles the /hginfo command

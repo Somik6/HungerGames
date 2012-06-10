@@ -1,4 +1,4 @@
-package com.hungergames.hg.listeners;
+package com.tips48.hungergames.listeners;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -6,9 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import com.hungergames.hg.GameSession;
-import com.hungergames.hg.HungerGames;
-import com.hungergames.hg.utils.EventUtils;
+import com.tips48.hungergames.GameSession;
+import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.utils.EventUtils;
 
 /**
  * Listens for when a player has moved

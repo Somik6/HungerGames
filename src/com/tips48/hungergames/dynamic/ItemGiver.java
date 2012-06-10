@@ -1,4 +1,4 @@
-package com.hungergames.hg.dynamic;
+package com.tips48.hungergames.dynamic;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.hungergames.hg.HungerGames;
+import com.tips48.hungergames.HungerGames;
 
 /**
  * Randomly gives items to players

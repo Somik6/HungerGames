@@ -1,27 +1,26 @@
-package com.hungergames.hg.commands;
+package com.tips48.hungergames.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.hungergames.hg.HungerGames;
+import com.tips48.hungergames.HungerGames;
 
 /**
- * Handles the /hgstop command
+ * Handles the /hgstart command
  * 
  * @author tips48
- * 
  */
-public class StopCommand implements CommandExecutor {
+public class StartCommand implements CommandExecutor {
 	private final HungerGames plugin;
 
 	/**
-	 * Creates a new StopCommand
+	 * Creates a new StartCommand
 	 * 
 	 * @param plugin
 	 *            Plugin instance
 	 */
-	public StopCommand(HungerGames plugin) {
+	public StartCommand(HungerGames plugin) {
 		this.plugin = plugin;
 	}
 
@@ -31,9 +30,10 @@ public class StopCommand implements CommandExecutor {
 		if (args.length != 0) {
 			return false;
 		}
-		if (!(plugin.getGameManager().getGameSession().stop())) {
-			sender.sendMessage(plugin.getBroadcaster().styleMessage("Failed to stop the game!"));
+		if (!(plugin.getGameManager().getGameSession().start())) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("Failed to start the game!"));
 		}
 		return true;
 	}
+
 }

@@ -1,4 +1,4 @@
-package com.hungergames.hg;
+package com.tips48.hungergames;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.bukkit.entity.Player;
 
-import com.hungergames.hg.config.HGConfig;
+import com.tips48.hungergames.config.HGConfig;
 
 /**
  * Stores information about one session of

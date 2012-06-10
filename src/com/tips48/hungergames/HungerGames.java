@@ -1,24 +1,24 @@
-package com.hungergames.hg;
+package com.tips48.hungergames;
 
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.hungergames.hg.commands.InfoCommand;
-import com.hungergames.hg.commands.StartCommand;
-import com.hungergames.hg.commands.StopCommand;
-import com.hungergames.hg.config.HGConfig;
-import com.hungergames.hg.dynamic.ItemGiver;
-import com.hungergames.hg.dynamic.MobSpawner;
-import com.hungergames.hg.dynamic.RandomPotions;
-import com.hungergames.hg.listeners.BlockBreakListener;
-import com.hungergames.hg.listeners.BlockPlaceListener;
-import com.hungergames.hg.listeners.PlayerChatListener;
-import com.hungergames.hg.listeners.PlayerJoinListener;
-import com.hungergames.hg.listeners.PlayerKickListener;
-import com.hungergames.hg.listeners.PlayerMoveListener;
-import com.hungergames.hg.listeners.PlayerQuitListener;
-import com.hungergames.hg.listeners.PlayerRespawnListener;
-import com.hungergames.hg.utils.Broadcaster;
+import com.tips48.hungergames.commands.InfoCommand;
+import com.tips48.hungergames.commands.StartCommand;
+import com.tips48.hungergames.commands.StopCommand;
+import com.tips48.hungergames.config.HGConfig;
+import com.tips48.hungergames.dynamic.ItemGiver;
+import com.tips48.hungergames.dynamic.MobSpawner;
+import com.tips48.hungergames.dynamic.RandomPotions;
+import com.tips48.hungergames.listeners.BlockBreakListener;
+import com.tips48.hungergames.listeners.BlockPlaceListener;
+import com.tips48.hungergames.listeners.PlayerChatListener;
+import com.tips48.hungergames.listeners.PlayerJoinListener;
+import com.tips48.hungergames.listeners.PlayerKickListener;
+import com.tips48.hungergames.listeners.PlayerMoveListener;
+import com.tips48.hungergames.listeners.PlayerQuitListener;
+import com.tips48.hungergames.listeners.PlayerRespawnListener;
+import com.tips48.hungergames.utils.Broadcaster;
 
 /**
  * Main class of the plugin

@@ -1,4 +1,4 @@
-package com.hungergames.hg.utils;
+package com.tips48.hungergames.utils;
 
 import org.bukkit.Location;
 import org.bukkit.event.player.PlayerMoveEvent;

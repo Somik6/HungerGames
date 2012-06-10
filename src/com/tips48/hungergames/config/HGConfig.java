@@ -1,4 +1,4 @@
-package com.hungergames.hg.config;
+package com.tips48.hungergames.config;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import com.hungergames.hg.HungerGames;
+import com.tips48.hungergames.HungerGames;
 
 public class HGConfig {
 	/**
