@@ -7,6 +7,8 @@ import java.util.Set;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import com.tips48.hungergames.config.HGConfig;
+
 /**
  * Stores information about one session of
  * 
@@ -110,6 +112,9 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addPlayer(String player) {
+		if (HGConfig.MAX_PLAYERS != -1 && players.size() == HGConfig.MAX_PLAYERS) {
+			return;
+		}
 		plugin.getBroadcaster().alertEveryone(
 				player + " has joined the Hunger Games!");
 		this.players.add(player);
@@ -317,16 +322,24 @@ public class GameSession {
 		if (started) {
 			return false;
 		}
+		if (HGConfig.MIN_PLAYERS != -1 && players.size() < HGConfig.MIN_PLAYERS) {
+			return false;
+		}
 		started = true;
 		plugin.getBroadcaster().alertEveryone(
 				ChatColor.GREEN + "The game has been started!");
-		taskId = plugin.getServer().getScheduler()
-				.scheduleSyncRepeatingTask(plugin, new Runnable() {
-					public void run() {
-						plugin.getBroadcaster()
-								.alertEveryoneOfRemainingPlayers();
-					}
-				}, 5 * 20 * 60, 5 * 20 * 60);
+		if (HGConfig.BROADCAST_PLAYERS_LEFT) {
+			taskId = plugin.getServer().getScheduler()
+					.scheduleSyncRepeatingTask(
+							plugin,
+							new Runnable() {
+								public void run() {
+									plugin.getBroadcaster()
+											.alertEveryoneOfRemainingPlayers();
+								}
+							}, HGConfig.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60,
+							HGConfig.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60);
+		}
 		return true;
 	}
 

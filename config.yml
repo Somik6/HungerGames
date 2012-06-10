@@ -1,0 +1,21 @@
+# HungerGames configuration file
+# Use with care!
+# Type /hgreload to reload the configuration
+HungerGames:
+    # Minimum players needed to start the game
+    # -1 for no minimum
+    minPlayers: 2
+    # Maximum players before players can't join the game
+    # -1 for no maximum
+    maxPlayers: 7
+    # If how many players left should be broadcasted at certain intervals
+    broadcastPlayersLeft: true
+    # How often how many players left should be broadcasted, in minutes
+    # Ignored if broadcastPlayersLeft is false
+    broadcastPlayersLeftEvery: 5
+    # Users that are always administrators in the game
+    administrators:
+        - Me
+        - MyFriend
+        - SomeRandomGuy
+    
