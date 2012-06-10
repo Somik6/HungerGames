@@ -24,19 +24,29 @@ public class GameSession {
 
 	private boolean started;
 
+	private int taskId = -1;
+
 	/**
 	 * Creates a new GameSession
 	 * 
 	 * @param plugin
 	 *            Plugin instance
 	 */
-	public GameSession(HungerGames plugin, String name) {
+	public GameSession(final HungerGames plugin, String name) {
 		this.plugin = plugin;
 		this.name = name;
 		this.players = new HashSet<String>();
 		this.deadPlayers = new HashSet<String>();
 		this.admins = new HashSet<String>();
 		this.started = false;
+
+		taskId = plugin.getServer().getScheduler()
+				.scheduleSyncRepeatingTask(plugin, new Runnable() {
+					public void run() {
+						plugin.getBroadcaster()
+								.alertEveryoneOfRemainingPlayers();
+					}
+				}, 5 * 20 * 60, 5 * 20 * 60);
 	}
 
 	/**
@@ -333,6 +343,10 @@ public class GameSession {
 		started = false;
 		plugin.getBroadcaster().alertEveryone(
 				ChatColor.RED + "The game is over!");
+		if (taskId != -1) {
+			plugin.getServer().getScheduler().cancelTask(taskId);
+			taskId = -1;
+		}
 		return true;
 	}
 
@@ -356,8 +370,20 @@ public class GameSession {
 					public void run() {
 						plugin.getBroadcaster().alertEveryone(
 								ChatColor.RED + name + " has died!");
+						plugin.getBroadcaster()
+								.alertEveryoneOfRemainingPlayers();
+						checkStatus();
 					}
 				}, 2);
+	}
+
+	/**
+	 * Checks if the game should be ended
+	 */
+	public void checkStatus() {
+		if (players.size() < 2) {
+			stop();
+		}
 	}
 
 }
