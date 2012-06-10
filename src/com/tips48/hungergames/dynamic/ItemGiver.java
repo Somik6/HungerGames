@@ -2,12 +2,14 @@ package com.tips48.hungergames.dynamic;
 
 import java.util.Random;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.tips48.hungergames.HungerGames;
 
 public class ItemGiver {
+	@SuppressWarnings("unused")
 	private HungerGames plugin;
 	private int itemGiveChance;
 	private Random rand;
@@ -55,17 +57,16 @@ public class ItemGiver {
 	private ItemStack getItem() {
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
-
+				return new ItemStack(Material.STONE_SWORD, 1);
 			} else {
-
+				return new ItemStack(Material.RAW_BEEF, 1);
 			}
 		} else {
 			if (rand.nextBoolean()) {
-
+				return new ItemStack(Material.COOKED_BEEF, 1);
 			} else {
-
+				return new ItemStack(Material.WOOD_SWORD, 1);
 			}
 		}
-		return null;
 	}
 }

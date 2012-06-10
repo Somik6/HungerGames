@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.tips48.hungergames.commands.InfoCommand;
 import com.tips48.hungergames.commands.StartCommand;
 import com.tips48.hungergames.commands.StopCommand;
+import com.tips48.hungergames.dynamic.ItemGiver;
 import com.tips48.hungergames.listeners.PlayerDeathListener;
 import com.tips48.hungergames.listeners.PlayerJoinListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
@@ -30,11 +31,15 @@ public class HungerGames extends JavaPlugin {
 	private StartCommand startCommand;
 	private StopCommand stopCommand;
 	private InfoCommand infoCommand;
+	// ItemGiver
+	private ItemGiver itemGiver;
 
 	@Override
 	public void onLoad() {
 		gameManager = new GameManager(this);
 		gameManager.createSession("Hunger Games", null, null);
+
+		itemGiver = new ItemGiver(this);
 
 		joinListener = new PlayerJoinListener(this);
 		moveListener = new PlayerMoveListener(this);
@@ -85,6 +90,15 @@ public class HungerGames extends JavaPlugin {
 	 */
 	public GameManager getGameManager() {
 		return gameManager;
+	}
+
+	/**
+	 * Gets the ItemGiver
+	 * 
+	 * @return ItemGiver
+	 */
+	public ItemGiver getItemGiver() {
+		return itemGiver;
 	}
 
 }

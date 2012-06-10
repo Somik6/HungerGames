@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import com.tips48.hungergames.GameSession;
 import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.dynamic.ItemGiver;
 import com.tips48.hungergames.utils.EventUtils;
 
 /**
@@ -17,6 +18,7 @@ import com.tips48.hungergames.utils.EventUtils;
  */
 public class PlayerMoveListener implements Listener {
 	private final HungerGames plugin;
+	private final ItemGiver itemGiver;
 
 	/**
 	 * Creates a new PlayerMoveListener
@@ -26,6 +28,7 @@ public class PlayerMoveListener implements Listener {
 	 */
 	public PlayerMoveListener(HungerGames plugin) {
 		this.plugin = plugin;
+		this.itemGiver = plugin.getItemGiver();
 	}
 
 	@EventHandler(ignoreCancelled = true)
@@ -37,6 +40,9 @@ public class PlayerMoveListener implements Listener {
 			Location from = event.getFrom();
 			player.teleport(from);
 			event.setCancelled(true);
+		}
+		if (session.isStarted() && session.isPlayer(player)) {
+			itemGiver.handlePlayerMoveEvent(player);
 		}
 	}
 }
