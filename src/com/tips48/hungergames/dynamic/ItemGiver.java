@@ -40,7 +40,10 @@ public class ItemGiver {
 	 */
 	public void handlePlayerMoveEvent(Player player) {
 		if (shouldGiveItem(player.getName())) {
-			player.getInventory().addItem(getItem());
+			ItemStack givenItem = getItem();
+			player.getInventory().addItem(givenItem);
+			player.sendMessage(plugin.getBroadcaster().styleMessage(
+					"You were given a gift by the game masters!"));
 		}
 	}
 

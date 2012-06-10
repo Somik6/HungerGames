@@ -18,7 +18,9 @@ public class PlayerChatListener implements Listener {
 	public void handle(PlayerChatEvent event) {
 		if (!(plugin.getGameManager().getGameSession().isStarted())) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage("[" + ChatColor.GOLD + "HG" + ChatColor.WHITE + "] You cannot chat until the game has started!");
+			event.getPlayer().sendMessage(
+					plugin.getBroadcaster().styleMessage(
+							"You cannot chat until the game has started!"));
 		}
 	}
 }

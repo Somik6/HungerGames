@@ -37,6 +37,9 @@ public class BlockBreakListener implements Listener {
 	public void handle(BlockBreakEvent event) {
 		Player player = event.getPlayer();
 		GameSession session = plugin.getGameManager().getGameSession();
+		if (!(session.isStarted()) && !(session.isAdmin(player))) {
+			event.setCancelled(true);
+		}
 		if (session.getDeadPlayers().contains(player)) {
 			event.setCancelled(true);
 		}
