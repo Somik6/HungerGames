@@ -337,12 +337,12 @@ public class GameSession {
 	}
 
 	/**
-	 * Called when a player is killed
+	 * Called when a player respawns
 	 * 
 	 * @param player
-	 *            Player that was killed
+	 *            Player that respawned
 	 */
-	public void onPlayerKilled(Player player) {
+	public void onPlayerRespawn(Player player) {
 		player.setAllowFlight(true);
 		for (Player p : plugin.getServer().getOnlinePlayers()) {
 			p.hidePlayer(player);

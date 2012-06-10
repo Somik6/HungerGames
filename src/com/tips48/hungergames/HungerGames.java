@@ -9,7 +9,7 @@ import com.tips48.hungergames.commands.StopCommand;
 import com.tips48.hungergames.dynamic.ItemGiver;
 import com.tips48.hungergames.dynamic.MobSpawner;
 import com.tips48.hungergames.listeners.BlockBreakListener;
-import com.tips48.hungergames.listeners.PlayerDeathListener;
+import com.tips48.hungergames.listeners.PlayerRespawnListener;
 import com.tips48.hungergames.listeners.PlayerJoinListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
 import com.tips48.hungergames.listeners.PlayerMoveListener;
@@ -29,7 +29,7 @@ public class HungerGames extends JavaPlugin {
 	private PlayerMoveListener moveListener;
 	private PlayerQuitListener quitListener;
 	private PlayerKickListener kickListener;
-	private PlayerDeathListener deathListener;
+	private PlayerRespawnListener deathListener;
 
 	private BlockBreakListener breakListener;
 	// Commands
@@ -54,7 +54,7 @@ public class HungerGames extends JavaPlugin {
 		moveListener = new PlayerMoveListener(this);
 		quitListener = new PlayerQuitListener(this);
 		kickListener = new PlayerKickListener(this);
-		deathListener = new PlayerDeathListener(this);
+		deathListener = new PlayerRespawnListener(this);
 
 		breakListener = new BlockBreakListener(this);
 
