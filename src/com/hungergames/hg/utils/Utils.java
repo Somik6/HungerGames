@@ -1,4 +1,4 @@
-package com.tips48.hungergames.utils;
+package com.hungergames.hg.utils;
 
 import java.util.Collection;
 

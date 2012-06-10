@@ -1,4 +1,4 @@
-package com.tips48.hungergames;
+package com.hungergames.hg;
 
 import java.util.HashSet;
 import java.util.Set;

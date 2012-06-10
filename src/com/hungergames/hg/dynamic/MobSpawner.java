@@ -1,21 +1,22 @@
-package com.tips48.hungergames.dynamic;
+package com.hungergames.hg.dynamic;
 
 import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
-import com.tips48.hungergames.HungerGames;
+import com.hungergames.hg.HungerGames;
 
 /**
  * Randomly spawns mobs near a player
  * 
- * @author tips48
+ * @author steaks4uce
  * 
  */
 public class MobSpawner {
 	private int mobSpawnChance;
 	private Random rand;
+	@SuppressWarnings("unused")
 	private HungerGames plugin;
 
 	/**
@@ -37,8 +38,7 @@ public class MobSpawner {
 	 *            Player who moved
 	 */
 	public void handlePlayerMoveEvent(Player player) {
-		if (shouldSpawnMob(player)
-				&& plugin.getGameManager().getGameSession().isPlayer(player)) {
+		if (shouldSpawnMob(player)) {
 			player.getWorld().spawnCreature(getLocation(player), getEntity());
 		}
 	}

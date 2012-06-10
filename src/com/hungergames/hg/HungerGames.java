@@ -1,23 +1,24 @@
-package com.tips48.hungergames;
+package com.hungergames.hg;
 
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.tips48.hungergames.commands.InfoCommand;
-import com.tips48.hungergames.commands.StartCommand;
-import com.tips48.hungergames.commands.StopCommand;
-import com.tips48.hungergames.config.HGConfig;
-import com.tips48.hungergames.dynamic.ItemGiver;
-import com.tips48.hungergames.dynamic.MobSpawner;
-import com.tips48.hungergames.listeners.BlockBreakListener;
-import com.tips48.hungergames.listeners.BlockPlaceListener;
-import com.tips48.hungergames.listeners.PlayerChatListener;
-import com.tips48.hungergames.listeners.PlayerRespawnListener;
-import com.tips48.hungergames.listeners.PlayerJoinListener;
-import com.tips48.hungergames.listeners.PlayerKickListener;
-import com.tips48.hungergames.listeners.PlayerMoveListener;
-import com.tips48.hungergames.listeners.PlayerQuitListener;
-import com.tips48.hungergames.utils.Broadcaster;
+import com.hungergames.hg.commands.InfoCommand;
+import com.hungergames.hg.commands.StartCommand;
+import com.hungergames.hg.commands.StopCommand;
+import com.hungergames.hg.config.HGConfig;
+import com.hungergames.hg.dynamic.ItemGiver;
+import com.hungergames.hg.dynamic.MobSpawner;
+import com.hungergames.hg.dynamic.RandomPotions;
+import com.hungergames.hg.listeners.BlockBreakListener;
+import com.hungergames.hg.listeners.BlockPlaceListener;
+import com.hungergames.hg.listeners.PlayerChatListener;
+import com.hungergames.hg.listeners.PlayerJoinListener;
+import com.hungergames.hg.listeners.PlayerKickListener;
+import com.hungergames.hg.listeners.PlayerMoveListener;
+import com.hungergames.hg.listeners.PlayerQuitListener;
+import com.hungergames.hg.listeners.PlayerRespawnListener;
+import com.hungergames.hg.utils.Broadcaster;
 
 /**
  * Main class of the plugin
@@ -45,6 +46,7 @@ public class HungerGames extends JavaPlugin {
 	private ItemGiver itemGiver;
 	private MobSpawner mobSpawner;
 	private Broadcaster broadcaster;
+	private RandomPotions randomPotions;
 
 	@Override
 	public void onLoad() {
@@ -54,6 +56,7 @@ public class HungerGames extends JavaPlugin {
 		itemGiver = new ItemGiver(this);
 		mobSpawner = new MobSpawner(this);
 		broadcaster = new Broadcaster(this);
+		randomPotions = new RandomPotions(this);
 
 		joinListener = new PlayerJoinListener(this);
 		moveListener = new PlayerMoveListener(this);
@@ -82,14 +85,14 @@ public class HungerGames extends JavaPlugin {
 	 */
 	private void registerEvents() {
 		PluginManager manager = this.getServer().getPluginManager();
-		
+
 		manager.registerEvents(joinListener, this);
 		manager.registerEvents(moveListener, this);
 		manager.registerEvents(quitListener, this);
 		manager.registerEvents(kickListener, this);
 		manager.registerEvents(respawnListener, this);
 		manager.registerEvents(chatListener, this);
-		
+
 		manager.registerEvents(placeListener, this);
 		manager.registerEvents(breakListener, this);
 	}
@@ -141,6 +144,10 @@ public class HungerGames extends JavaPlugin {
 	 */
 	public Broadcaster getBroadcaster() {
 		return broadcaster;
+	}
+
+	public RandomPotions getRandomPotions() {
+		return randomPotions;
 	}
 
 }

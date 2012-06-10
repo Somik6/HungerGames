@@ -1,12 +1,12 @@
-package com.tips48.hungergames.listeners;
+package com.hungergames.hg.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import com.tips48.hungergames.GameSession;
-import com.tips48.hungergames.HungerGames;
+import com.hungergames.hg.GameSession;
+import com.hungergames.hg.HungerGames;
 
 /**
  * Listens for when a player has quit
@@ -38,6 +38,7 @@ public class PlayerQuitListener implements Listener {
 		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
 		session.removePlayer(player);
-		plugin.getBroadcaster().alertEveryone(player.getName() + " has quit the Hunger Games!");
+		plugin.getBroadcaster().alertEveryone(
+				player.getName() + " has quit the Hunger Games!");
 	}
 }

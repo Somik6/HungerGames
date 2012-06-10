@@ -1,4 +1,4 @@
-package com.tips48.hungergames.dynamic;
+package com.hungergames.hg.dynamic;
 
 import java.util.Random;
 
@@ -6,12 +6,12 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.tips48.hungergames.HungerGames;
+import com.hungergames.hg.HungerGames;
 
 /**
  * Randomly gives items to players
  * 
- * @author tips48
+ * @author steaks4uce
  * 
  */
 public class ItemGiver {

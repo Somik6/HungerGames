@@ -1,16 +1,16 @@
-package com.tips48.hungergames.utils;
+package com.hungergames.hg.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import com.tips48.hungergames.GameSession;
-import com.tips48.hungergames.HungerGames;
+import com.hungergames.hg.GameSession;
+import com.hungergames.hg.HungerGames;
 
 /**
  * Handles broadcasting information to all the players
  * 
- * @author tips48
+ * @author steaks4uce
  * 
  */
 public class Broadcaster {
