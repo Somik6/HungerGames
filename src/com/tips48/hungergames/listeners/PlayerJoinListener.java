@@ -41,7 +41,7 @@ public class PlayerJoinListener implements Listener {
 		Player player = event.getPlayer();
 		session.addPlayer(player);
 
-		player.teleport(new Location(player.getWorld(), 0, 0, 0)); // Temporary
+		player.teleport(new Location(player.getWorld(), 0, player.getWorld().getHighestBlockYAt(0, 0), 0)); // Temporary
 		player.getInventory().clear();
 		player.getInventory().addItem(new ItemStack(Material.STICK, 1));
 	}
