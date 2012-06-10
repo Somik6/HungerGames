@@ -34,15 +34,13 @@ public class MobSpawner {
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
 				return EntityType.CREEPER;
-			} else {
-				return EntityType.SKELETON;
 			}
+			return EntityType.SKELETON;
 		} else {
 			if (rand.nextBoolean()) {
 				return EntityType.ZOMBIE;
-			} else {
-				return EntityType.CAVE_SPIDER;
 			}
+			return EntityType.CAVE_SPIDER;
 		}
 	}
 

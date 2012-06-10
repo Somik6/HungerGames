@@ -58,15 +58,13 @@ public class ItemGiver {
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
 				return new ItemStack(Material.STONE_SWORD, 1);
-			} else {
-				return new ItemStack(Material.RAW_BEEF, 1);
 			}
+			return new ItemStack(Material.RAW_BEEF, 1);
 		} else {
 			if (rand.nextBoolean()) {
 				return new ItemStack(Material.COOKED_BEEF, 1);
-			} else {
-				return new ItemStack(Material.WOOD_SWORD, 1);
 			}
+			return new ItemStack(Material.WOOD_SWORD, 1);
 		}
 	}
 }
