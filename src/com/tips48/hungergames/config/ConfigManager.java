@@ -1,7 +1,6 @@
 package com.tips48.hungergames.config;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -39,19 +38,9 @@ public class ConfigManager {
 	public static void init(HungerGames plugin) {
 		File configFile = new File(plugin.getDataFolder(), "config.yml");
 		if (!(configFile.exists())) {
-			File parent = configFile.getParentFile();
-			if (!(parent.exists())) {
-				parent.mkdir();
-			}
-			try {
-				configFile.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			plugin.saveResource("config.yml", false);
 		}
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-		
-		config.options().copyDefaults(true);
 		
 		MIN_PLAYERS = config.getInt("HungerGames.minPlayers");
 		MAX_PLAYERS = config.getInt("HungerGames.maxPlayers");
@@ -60,12 +49,6 @@ public class ConfigManager {
 		BROADCAST_PLAYERS_LEFT_EVERY = config.getInt("HungerGames.broadcastPlayersLeftEvery");	
 		
 		ADMINS = config.getStringList("HungerGames.administrators");
-		
-		try {
-			config.save(configFile);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
