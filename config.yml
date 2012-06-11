@@ -50,10 +50,10 @@ HungerGames:
 # - 50:2 
 # Gives two torches
     randomItemsList:
-      - 50:2
-      - 4:4
-      - 17:7
-      - 299:1	 
+      - 50,2
+      - 4,4
+      - 17,7
+      - 299,1	 
 # If potions should be randomly spawned on each player
     randomPotions: true	  
 # The chance that a potion will be spawned on a player
