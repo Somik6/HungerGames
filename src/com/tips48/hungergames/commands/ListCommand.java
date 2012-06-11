@@ -34,9 +34,11 @@ public class ListCommand implements CommandExecutor {
 			return false;
 		}
 		sender.sendMessage(plugin.getBroadcaster().styleMessage("Sesssions:"));
-		sender.sendMessage(plugin.getBroadcaster().styleMessage("Red = started;Green = not started"));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(
+				"Red = started;Green = not started"));
 		for (GameSession session : plugin.getGameManager().getSessions()) {
-			ChatColor color = session.isStarted() ? ChatColor.RED : ChatColor.GREEN;
+			ChatColor color = session.isStarted() ? ChatColor.RED
+					: ChatColor.GREEN;
 			sender.sendMessage(color + session.getName());
 		}
 		return true;

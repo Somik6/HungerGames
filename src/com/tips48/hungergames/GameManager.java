@@ -52,10 +52,12 @@ public class GameManager {
 		sessions.add(session);
 		return true;
 	}
-	
+
 	/**
 	 * Deletes a session
-	 * @param name Session to delete
+	 * 
+	 * @param name
+	 *            Session to delete
 	 * @return If successful
 	 */
 	public boolean deleteSession(String name) {

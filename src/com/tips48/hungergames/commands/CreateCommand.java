@@ -32,10 +32,12 @@ public class CreateCommand implements CommandExecutor {
 			return false;
 		}
 		if (!(plugin.getGameManager().createSession(args[0], null, null))) {
-			sender.sendMessage(plugin.getBroadcaster().styleMessage("Error creating the session!"));
+			sender.sendMessage(plugin.getBroadcaster().styleMessage(
+					"Error creating the session!"));
 			return true;
 		}
-		sender.sendMessage(plugin.getBroadcaster().styleMessage("Session created"));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(
+				"Session created"));
 		return true;
 	}
 

@@ -32,10 +32,12 @@ public class DeleteCommand implements CommandExecutor {
 			return false;
 		}
 		if (!(plugin.getGameManager().deleteSession(args[0]))) {
-			sender.sendMessage(plugin.getBroadcaster().styleMessage("Error deleting the session!"));
+			sender.sendMessage(plugin.getBroadcaster().styleMessage(
+					"Error deleting the session!"));
 			return true;
 		}
-		sender.sendMessage(plugin.getBroadcaster().styleMessage("Session deleted"));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(
+				"Session deleted"));
 		return true;
 	}
 
