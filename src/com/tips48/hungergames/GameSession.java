@@ -319,7 +319,7 @@ public class GameSession {
 	/**
 	 * Starts the session
 	 * 
-	 * @return Successful
+	 * @return If successful
 	 */
 	public boolean start() {
 		if (started) {
@@ -327,6 +327,9 @@ public class GameSession {
 		}
 		if (ConfigManager.MIN_PLAYERS != -1
 				&& players.size() < ConfigManager.MIN_PLAYERS) {
+			return false;
+		}
+		if (players.size() < 2) {
 			return false;
 		}
 		started = true;
@@ -350,7 +353,7 @@ public class GameSession {
 	/**
 	 * Stops the session
 	 * 
-	 * @return Successful
+	 * @return If successful
 	 */
 	public boolean stop() {
 		if (!(started)) {
