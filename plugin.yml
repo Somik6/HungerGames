@@ -25,6 +25,9 @@ commands:
     hgcreate:
         description: Creates a session
         usage: Wrong syntax! Try /<command> <name>
+    hgfinish: 
+        description: Marks a session is ready to start
+        usage: Wrong syntax! Try /<command> <name>
     hgdelete:
         description: Deletes a session
         usage: Wrong syntax! Try /<command> <name>

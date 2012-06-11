@@ -37,12 +37,12 @@ public class GameManager {
 	 * @param players
 	 *            Players in the session
 	 */
-	public boolean createSession(String name, Set<String> admins,
+	public boolean createSession(String name, String creator, Set<String> admins,
 			Set<String> players) {
 		if (getGameSession(name) != null) {
 			return false;
 		}
-		GameSession session = new GameSession(plugin, name);
+		GameSession session = new GameSession(plugin, name, creator);
 		if (admins != null) {
 			session.addAllAdmins(admins);
 		}
@@ -108,6 +108,31 @@ public class GameManager {
 		for (GameSession session : sessions) {
 			if (session.isPlayer(player) || session.isAdmin(player)) {
 				return session;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Gets a session that this player constructed
+	 * @param player Player to check
+	 * @return Constructed session
+	 */
+	public GameSession getConstructedSession(Player player) {
+		return getConstructedSession(player.getName());
+	}
+	
+	/**
+	 * Gets a session that this player constructed
+	 * @param player Player to check
+	 * @return Constructed session
+	 */
+	public GameSession getConstructedSession(String player) {
+		for (GameSession session : sessions) {
+			if (session.getCreator().equalsIgnoreCase(player)) {
+				if (!(session.isConstructed())) {
+					return session;
+				}
 			}
 		}
 		return null;

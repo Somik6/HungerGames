@@ -18,6 +18,16 @@ HungerGames:
     - Me
     - MyFriend
     - SomeRandomGuy
+# If players should be teleported when the join the game
+  teleportOnJoin: true
+# If the players should be teleported randomly near the center of the session
+# Ignored if teleportOnJoin is false
+  randomTeleport: false
+# The radius in which random teleports can occur
+# Ignored if randomTeleport is false
+  randomTeleportRadius: 20
+# If the players inventory should be cleared when they join
+  clearInventory: true
   random:
 # If mobs should be randomly spawned near each player
     randomMobs: true

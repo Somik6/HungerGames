@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.tips48.hungergames.commands.AdminCommand;
 import com.tips48.hungergames.commands.CreateCommand;
 import com.tips48.hungergames.commands.DeleteCommand;
+import com.tips48.hungergames.commands.FinishCommand;
 import com.tips48.hungergames.commands.HelpCommand;
 import com.tips48.hungergames.commands.HungerGamesCommand;
 import com.tips48.hungergames.commands.InfoCommand;
@@ -55,6 +56,7 @@ public class HungerGames extends JavaPlugin {
 	private AdminCommand adminCommand;
 	private ListCommand listCommand;
 	private CreateCommand createCommand;
+	private FinishCommand finishCommand;
 	private DeleteCommand deleteCommand;
 	private JoinCommand joinCommand;
 	private LeaveCommand leaveCommand;
@@ -69,7 +71,6 @@ public class HungerGames extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		gameManager = new GameManager(this);
-		gameManager.createSession("Hunger Games", null, null);
 
 		itemGiver = new ItemGiver(this);
 		mobSpawner = new MobSpawner(this);
@@ -93,6 +94,7 @@ public class HungerGames extends JavaPlugin {
 		adminCommand = new AdminCommand(this);
 		listCommand = new ListCommand(this);
 		createCommand = new CreateCommand(this);
+		finishCommand = new FinishCommand(this);
 		deleteCommand = new DeleteCommand(this);
 		joinCommand = new JoinCommand(this);
 		leaveCommand = new LeaveCommand(this);
@@ -135,6 +137,7 @@ public class HungerGames extends JavaPlugin {
 		getCommand("hgadmin").setExecutor(adminCommand);
 		getCommand("hglist").setExecutor(listCommand);
 		getCommand("hgcreate").setExecutor(createCommand);
+		getCommand("hgfinish").setExecutor(finishCommand);
 		getCommand("hgdelete").setExecutor(deleteCommand);
 		getCommand("hgjoin").setExecutor(joinCommand);
 		getCommand("hgleave").setExecutor(leaveCommand);

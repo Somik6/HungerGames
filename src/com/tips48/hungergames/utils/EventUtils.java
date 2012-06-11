@@ -4,8 +4,9 @@ import java.util.Random;
 
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
+
+import com.tips48.hungergames.config.ConfigManager;
 
 /**
  * Utility methods for events
@@ -38,18 +39,37 @@ public class EventUtils {
 	/**
 	 * Returns a location to randomly spawn the player at.
 	 * 
-	 * @param player
+	 * @param location
 	 *            Player to teleport.
 	 * @return The location
 	 */
-	public static Location getRandomSpawnLocation(Player player) {
-		World world = player.getWorld();
+	public static Location getRandomSpawnLocation(Location location) {
+		World world = location.getWorld();
 		Random rand = new Random();
-		int addX = rand.nextInt(player.getName().length() * 2), addZ = rand
-				.nextInt(player.getName().length() * 2);
-
-		return new Location(world, addX, world.getHighestBlockAt(addX, addZ)
-				.getY(), addZ);
+		int x = rand.nextInt(ConfigManager.RANDOM_TELEPORT_RADIUS);
+	    int z = rand.nextInt(ConfigManager.RANDOM_TELEPORT_RADIUS);
+		
+		if (rand.nextBoolean()) {
+			if (rand.nextBoolean()) {
+				Location result = new Location(world, location.getX() + x, 0, location.getZ() + z);
+				result.setY(world.getHighestBlockYAt(result));
+				return result;
+			} else {
+				Location result = new Location(world, location.getX() - x, 0, location.getZ() + z);
+				result.setY(world.getHighestBlockYAt(result));
+				return result;
+			}
+		} else {
+			if (rand.nextBoolean()) {
+				Location result = new Location(world, location.getX() + x, 0, location.getZ() - z);
+				result.setY(world.getHighestBlockYAt(result));
+				return result;
+			} else {
+				Location result = new Location(world, location.getX() - x, 0, location.getZ() - z);
+				result.setY(world.getHighestBlockYAt(result));
+				return result;
+			}
+		}
 	}
 
 }

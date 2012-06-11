@@ -28,10 +28,31 @@ public class ConfigManager {
 	 */
 	public static int BROADCAST_PLAYERS_LEFT_EVERY;
 
+	
 	/**
 	 * List of users that are always administrators
 	 */
 	public static List<String> ADMINS;
+	
+	
+	/**
+	 * If players should be teleported when the join a match
+	 */
+	public static boolean TELEPORT_ON_JOIN;
+	/**
+	 * If players should be teleported randomly when they join a match
+	 */
+	public static boolean RANDOM_TELEPORT;
+	/**
+	 * Radius in which players can be randomly teleported
+	 */
+	public static int RANDOM_TELEPORT_RADIUS;
+	
+	
+	/**
+	 * If the players inventory should be cleared on join
+	 */
+	public static boolean CLEAR_INVENTORY;
 
 	/**
 	 * If mobs should be randomly spawned
@@ -87,6 +108,12 @@ public class ConfigManager {
 				.getInt("HungerGames.broadcastPlayersLeftEvery");
 
 		ADMINS = config.getStringList("HungerGames.administrators");
+		
+		TELEPORT_ON_JOIN = config.getBoolean("HungerGames.teleportOnJoin");
+		RANDOM_TELEPORT = config.getBoolean("HungerGames.randomTeleport");
+	    RANDOM_TELEPORT_RADIUS = config.getInt("HungerGames.randomTeleportRadius");
+	    
+	    CLEAR_INVENTORY = config.getBoolean("HungerGames.clearInventory");
 
 		RANDOM_MOBS = config.getBoolean("HungerGames.random.randomMobs");
 		RANDOM_MOBS_CHANCE = config

@@ -1,9 +1,12 @@
 package com.tips48.hungergames;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -21,12 +24,17 @@ public class GameSession {
 	private final HungerGames plugin;
 
 	private final String name;
+	
+	private final String creator;
 
 	private final Set<String> players;
 	private final Set<String> deadPlayers;
 	private final Set<String> admins;
+	
+	private final List<Location> locations;
 
 	private boolean started;
+	private boolean constructed;
 
 	private int taskId = -1;
 
@@ -36,13 +44,16 @@ public class GameSession {
 	 * @param plugin
 	 *            Plugin instance
 	 */
-	public GameSession(HungerGames plugin, String name) {
+	public GameSession(HungerGames plugin, String name, String creator) {
 		this.plugin = plugin;
 		this.name = name;
+		this.creator = creator;
 		this.players = new HashSet<String>();
 		this.deadPlayers = new HashSet<String>();
 		this.admins = new HashSet<String>();
+		this.locations = new ArrayList<Location>();
 		this.started = false;
+		this.constructed = false;
 	}
 
 	/**
@@ -52,6 +63,14 @@ public class GameSession {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Gets the name of the player who created this session
+	 * @return Creator
+	 */
+	public String getCreator() {
+		return creator;
 	}
 
 	/**
@@ -80,6 +99,25 @@ public class GameSession {
 	public Set<String> getDeadPlayers() {
 		return deadPlayers;
 	}
+	
+	/**
+	 * Gets a list of locations where the player could spawn
+	 * @return Locations
+	 */
+	public List<Location> getSpawnLocations() {
+		return locations;
+	}
+	
+	/**
+	 * Adds a location to the spawn location pool
+	 * @param loc Location to add
+	 */
+	public void addSpawnLocation(Location loc) {
+		locations.add(loc);
+		if (ConfigManager.TELEPORT_ON_JOIN && ConfigManager.RANDOM_TELEPORT) {
+			setConstructed(true);
+		}
+	}
 
 	/**
 	 * Gets all the players in this session, dead or alive
@@ -105,6 +143,18 @@ public class GameSession {
 	 */
 	public void addPlayer(Player player) {
 		addPlayer(player.getName());
+	}
+	
+	/**
+	 * Gets if the session is ready for joining
+	 * @return Constructed
+	 */
+	public boolean isConstructed() {
+		return constructed;
+	}
+	
+	public void setConstructed(boolean constructed) {
+		this.constructed = constructed;
 	}
 
 	/**
@@ -132,8 +182,26 @@ public class GameSession {
 		if (p == null) {
 			return;
 		}
-		p.teleport(EventUtils.getRandomSpawnLocation(p));
-		p.getInventory().clear();
+		if (ConfigManager.TELEPORT_ON_JOIN) {
+			if (ConfigManager.RANDOM_TELEPORT) {
+				p.teleport(EventUtils.getRandomSpawnLocation(locations.get(0)));
+			} else {
+				int playerSize = players.size();
+				int locSize = locations.size();
+				if (playerSize > locSize) {
+					int result = playerSize;
+					while (result > locSize) {
+						result -= locSize;
+					}
+					p.teleport(locations.get(result - 1));
+				} else {
+					p.teleport(locations.get(playerSize - 1));
+				}
+			}
+		}
+		if (ConfigManager.CLEAR_INVENTORY) {
+			p.getInventory().clear();
+		}
 		p.getInventory().addItem(new ItemStack(Material.STICK, 1));
 	}
 
