@@ -4,6 +4,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.tips48.hungergames.commands.InfoCommand;
+import com.tips48.hungergames.commands.ReloadCommand;
 import com.tips48.hungergames.commands.StartCommand;
 import com.tips48.hungergames.commands.StopCommand;
 import com.tips48.hungergames.config.ConfigManager;
@@ -42,6 +43,7 @@ public class HungerGames extends JavaPlugin {
 	private StartCommand startCommand;
 	private StopCommand stopCommand;
 	private InfoCommand infoCommand;
+	private ReloadCommand reloadCommand;
 	// Various utils
 	private ItemGiver itemGiver;
 	private MobSpawner mobSpawner;
@@ -71,6 +73,7 @@ public class HungerGames extends JavaPlugin {
 		startCommand = new StartCommand(this);
 		stopCommand = new StopCommand(this);
 		infoCommand = new InfoCommand(this);
+		reloadCommand = new ReloadCommand(this);
 	}
 
 	@Override
@@ -104,6 +107,7 @@ public class HungerGames extends JavaPlugin {
 		getCommand("hgstart").setExecutor(startCommand);
 		getCommand("hgstop").setExecutor(stopCommand);
 		getCommand("hginfo").setExecutor(infoCommand);
+		getCommand("hgreload").setExecutor(reloadCommand);
 	}
 
 	@Override

@@ -7,23 +7,31 @@ commands:
     hgstart:
         description: Manually starts the server
         permission: HungerGames.start
-        permission-message: You do not have permission!
+        permission-message: You don't have permission!
         usage: Wrong syntax! Try /<command>
     hgstop:
         description: Manually stops the server
         permission: HungerGames.stop
-        permission-message: You do not have permission!
+        permission-message: You don't have permission!
         usage: Wrong syntax! Try /<command>
     hginfo:
         description: Displays info about a session
+        usage: Wrong syntax! Try /<command>
+    hgreload:
+        description: Reloads the configuration
+        permission: HungerGames.reload
+        permission-message: You don't have permission!
         usage: Wrong syntax! Try /<command>
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command
     HungerGames.stop:
         description: Access to the /hgstop command
+    HungerGames.reload:
+        description: Access to the /hgreload command
     HungerGames.*:
         description: Access to all the Hunger Games commands
         children:
             HungerGames.start: true
             HungerGames.stop: true
+            HungerGames.reload: true
