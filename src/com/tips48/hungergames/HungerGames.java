@@ -15,6 +15,7 @@ import com.tips48.hungergames.dynamic.RandomPotions;
 import com.tips48.hungergames.listeners.BlockBreakListener;
 import com.tips48.hungergames.listeners.BlockPlaceListener;
 import com.tips48.hungergames.listeners.PlayerChatListener;
+import com.tips48.hungergames.listeners.PlayerDamageListener;
 import com.tips48.hungergames.listeners.PlayerJoinListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
 import com.tips48.hungergames.listeners.PlayerMoveListener;
@@ -37,6 +38,7 @@ public class HungerGames extends JavaPlugin {
 	private PlayerKickListener kickListener;
 	private PlayerRespawnListener respawnListener;
 	private PlayerChatListener chatListener;
+	private PlayerDamageListener damageListener;
 
 	private BlockBreakListener breakListener;
 	private BlockPlaceListener placeListener;
@@ -68,6 +70,7 @@ public class HungerGames extends JavaPlugin {
 		kickListener = new PlayerKickListener(this);
 		respawnListener = new PlayerRespawnListener(this);
 		chatListener = new PlayerChatListener(this);
+		damageListener = new PlayerDamageListener(this);
 
 		breakListener = new BlockBreakListener(this);
 		placeListener = new BlockPlaceListener(this);
@@ -98,6 +101,7 @@ public class HungerGames extends JavaPlugin {
 		manager.registerEvents(kickListener, this);
 		manager.registerEvents(respawnListener, this);
 		manager.registerEvents(chatListener, this);
+		manager.registerEvents(damageListener, this);
 
 		manager.registerEvents(placeListener, this);
 		manager.registerEvents(breakListener, this);
