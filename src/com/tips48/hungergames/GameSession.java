@@ -115,6 +115,9 @@ public class GameSession {
 				&& players.size() == ConfigManager.MAX_PLAYERS) {
 			return;
 		}
+		if (plugin.getGameManager().getGameSessionOfPlayer(player) != null) {
+			return;
+		}
 		plugin.getBroadcaster().alertEveryone(this,
 				player + " has joined the Hunger Games!");
 		this.players.add(player);
@@ -181,6 +184,9 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addAdmin(String admin) {
+		if (plugin.getGameManager().getGameSessionOfPlayer(admin) != null) {
+			return;
+		}
 		if (players.contains(admin)) {
 			players.remove(admin);
 		}
