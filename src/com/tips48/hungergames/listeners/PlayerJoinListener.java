@@ -49,7 +49,8 @@ public class PlayerJoinListener implements Listener {
 					.getWorld().getHighestBlockYAt(0, 0), 0)); // Temporary
 			player.getInventory().clear();
 			player.getInventory().addItem(new ItemStack(Material.STICK, 1));
-			player.getInventory().addItem(new ItemStack(Material.ROTTEN_FLESH, 2));
+			player.getInventory().addItem(
+					new ItemStack(Material.ROTTEN_FLESH, 2));
 		}
 	}
 

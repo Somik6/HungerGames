@@ -32,7 +32,8 @@ public class StopCommand implements CommandExecutor {
 			return false;
 		}
 		if (!(plugin.getGameManager().getGameSession().stop())) {
-			sender.sendMessage(plugin.getBroadcaster().styleMessage("Failed to stop the game!"));
+			sender.sendMessage(plugin.getBroadcaster().styleMessage(
+					"Failed to stop the game!"));
 		}
 		return true;
 	}

@@ -35,7 +35,8 @@ public class AdminCommand implements CommandExecutor {
 		}
 		Player player = plugin.getServer().getPlayer(args[0]);
 		if (player == null) {
-			sender.sendMessage(plugin.getBroadcaster().styleMessage("The specified player was not online!"));
+			sender.sendMessage(plugin.getBroadcaster().styleMessage(
+					"The specified player was not online!"));
 			return true;
 		}
 		GameSession session = plugin.getGameManager().getGameSession();

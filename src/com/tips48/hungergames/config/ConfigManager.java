@@ -54,8 +54,7 @@ public class ConfigManager {
 	 * A list of items that could be spawned
 	 */
 	public static List<ItemStack> RANDOM_ITEM_LIST;
-	
-	
+
 	/**
 	 * If potions should be randomly spawned
 	 */
@@ -82,35 +81,34 @@ public class ConfigManager {
 		MIN_PLAYERS = config.getInt("HungerGames.minPlayers");
 		MAX_PLAYERS = config.getInt("HungerGames.maxPlayers");
 
-		
 		BROADCAST_PLAYERS_LEFT = config
 				.getBoolean("HungerGames.broadcastPlayersLeft");
 		BROADCAST_PLAYERS_LEFT_EVERY = config
 				.getInt("HungerGames.broadcastPlayersLeftEvery");
 
-		
 		ADMINS = config.getStringList("HungerGames.administrators");
 
 		RANDOM_MOBS = config.getBoolean("HungerGames.random.randomMobs");
 		RANDOM_MOBS_CHANCE = config
 				.getInt("HungerGames.random.randomMobsChance");
 
-		
 		RANDOM_ITEMS = config.getBoolean("HungerGames.random.randomItems");
 		RANDOM_ITEMS_CHANCE = config
 				.getInt("HungerGames.random.randomItemsChance");
 		List<String> rawItems = config
 				.getStringList("HungerGames.random.randomItemsList");
 		RANDOM_ITEM_LIST = parseItems(rawItems);
-		
-		
+
 		RANDOM_POTIONS = config.getBoolean("HungerGames.random.randomPotions");
-		RANDOM_POTIONS_CHANCE = config.getInt("HungerGames.random.randomPotionsChance");
+		RANDOM_POTIONS_CHANCE = config
+				.getInt("HungerGames.random.randomPotionsChance");
 	}
 
 	/**
 	 * Parses a raw List<String> into a List<ItemStack>
-	 * @param raw List to parse
+	 * 
+	 * @param raw
+	 *            List to parse
 	 * @return List with ItemStack's
 	 */
 	private static List<ItemStack> parseItems(List<String> raw) {

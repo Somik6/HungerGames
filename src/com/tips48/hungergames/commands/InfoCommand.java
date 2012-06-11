@@ -45,9 +45,12 @@ public class InfoCommand implements CommandExecutor {
 		if (dead.isEmpty()) {
 			dead = "None";
 		}
-		sender.sendMessage(plugin.getBroadcaster().styleMessage(session.getName()));
-		sender.sendMessage(plugin.getBroadcaster().styleMessage("Admins: " + admins));
-		sender.sendMessage(plugin.getBroadcaster().styleMessage("Players: " + alive + ", " + dead));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(
+				session.getName()));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(
+				"Admins: " + admins));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage(
+				"Players: " + alive + ", " + dead));
 		return true;
 	}
 }

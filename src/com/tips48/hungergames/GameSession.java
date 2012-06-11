@@ -325,7 +325,8 @@ public class GameSession {
 		if (started) {
 			return false;
 		}
-		if (ConfigManager.MIN_PLAYERS != -1 && players.size() < ConfigManager.MIN_PLAYERS) {
+		if (ConfigManager.MIN_PLAYERS != -1
+				&& players.size() < ConfigManager.MIN_PLAYERS) {
 			return false;
 		}
 		started = true;
@@ -339,7 +340,8 @@ public class GameSession {
 									plugin.getBroadcaster()
 											.alertEveryoneOfRemainingPlayers();
 								}
-							}, ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60,
+							},
+							ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60,
 							ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60);
 		}
 		return true;

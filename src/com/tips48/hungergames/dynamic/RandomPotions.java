@@ -42,7 +42,8 @@ public class RandomPotions {
 			return;
 		}
 		if (applyEffect(player)) {
-			//player.getActivePotionEffects().clear(); - the player may have his own potions, we don't want this
+			// player.getActivePotionEffects().clear(); - the player may have
+			// his own potions, we don't want this
 			player.addPotionEffect(getEffect());
 		}
 	}
