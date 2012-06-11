@@ -33,7 +33,9 @@ public class StartCommand implements CommandExecutor {
 		if (!(plugin.getGameManager().getGameSession().start())) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
 					"Failed to start the game!"));
+			return true;
 		}
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("The game was started!"));
 		return true;
 	}
 
