@@ -52,6 +52,7 @@ public class LeaveCommand implements CommandExecutor {
 			return true;
 		}
 		session.removePlayer(player);
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Session left!"));
 		return true;
 	}
 

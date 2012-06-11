@@ -55,6 +55,7 @@ public class JoinCommand implements CommandExecutor {
 			return true;
 		}
 		session.addPlayer(player);
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Session joined!"));
 		return true;
 	}
 
