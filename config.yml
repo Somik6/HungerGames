@@ -13,6 +13,7 @@ HungerGames:
 # Ignored if broadcastPlayersLeft is false
   broadcastPlayersLeftEvery: 5
 # Users that are always administrators in the game
+# These names are case-sensitive
   administrators:
     - Me
     - MyFriend

@@ -118,6 +118,10 @@ public class GameSession {
 				&& players.size() == ConfigManager.MAX_PLAYERS) {
 			return;
 		}
+		if (ConfigManager.ADMINS.contains(player)) {
+			addAdmin(player);
+			return;
+		}
 		if (plugin.getGameManager().getGameSessionOfPlayer(player) != null) {
 			return;
 		}
