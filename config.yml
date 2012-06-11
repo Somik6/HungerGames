@@ -53,9 +53,9 @@ HungerGames:
       - 50,2
       - 4,4
       - 17,7
-      - 299,1	 
+      - 299,1
 # If potions should be randomly spawned on each player
-    randomPotions: true	  
+    randomPotions: true
 # The chance that a potion will be spawned on a player
 # The check is called every time the player moves, so this should be a big number
 # Ignored if randomPotions is false
