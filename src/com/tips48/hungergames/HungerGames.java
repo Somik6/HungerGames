@@ -6,7 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.tips48.hungergames.commands.AdminCommand;
 import com.tips48.hungergames.commands.CreateCommand;
 import com.tips48.hungergames.commands.DeleteCommand;
+import com.tips48.hungergames.commands.HelpCommand;
+import com.tips48.hungergames.commands.HungerGamesCommand;
 import com.tips48.hungergames.commands.InfoCommand;
+import com.tips48.hungergames.commands.JoinCommand;
+import com.tips48.hungergames.commands.LeaveCommand;
 import com.tips48.hungergames.commands.ListCommand;
 import com.tips48.hungergames.commands.ReloadCommand;
 import com.tips48.hungergames.commands.StartCommand;
@@ -54,6 +58,10 @@ public class HungerGames extends JavaPlugin {
 	private ListCommand listCommand;
 	private CreateCommand createCommand;
 	private DeleteCommand deleteCommand;
+	private JoinCommand joinCommand;
+	private LeaveCommand leaveCommand;
+	private HungerGamesCommand hgCommand;
+	private HelpCommand helpCommand;
 	// Various utils
 	private ItemGiver itemGiver;
 	private MobSpawner mobSpawner;
@@ -89,6 +97,10 @@ public class HungerGames extends JavaPlugin {
 		listCommand = new ListCommand(this);
 		createCommand = new CreateCommand(this);
 		deleteCommand = new DeleteCommand(this);
+		joinCommand = new JoinCommand(this);
+		leaveCommand = new LeaveCommand(this);
+		hgCommand = new HungerGamesCommand(this);
+		helpCommand = new HelpCommand(this);
 	}
 
 	@Override
@@ -128,6 +140,10 @@ public class HungerGames extends JavaPlugin {
 		getCommand("hglist").setExecutor(listCommand);
 		getCommand("hgcreate").setExecutor(createCommand);
 		getCommand("hgdelete").setExecutor(deleteCommand);
+		getCommand("hgjoin").setExecutor(joinCommand);
+		getCommand("hgleave").setExecutor(leaveCommand);
+		getCommand("hg").setExecutor(hgCommand);
+		getCommand("hghelp").setExecutor(helpCommand);
 	}
 
 	@Override

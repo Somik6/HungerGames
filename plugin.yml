@@ -40,6 +40,19 @@ commands:
         permission: HungerGames.delete
         permission-message: You don't have permission!
         usage: Wrong syntax! Try /<command> <name>
+    hgjoin:
+        description: Joins a session
+        usage: Wrong syntax! Try /<command> <name>
+    hgleave:
+        description: Leaves a session
+        usage: Wrong syntax! Try /<command>
+    hg:
+        description: Basic command
+        aliases: [hungergames, hungergame]
+        usage: Wrong syntax! Try /<command>
+    hghelp:
+        description: Displays information about the HungerGames commands
+        usage: Wrong syntax! Try /<command>
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command

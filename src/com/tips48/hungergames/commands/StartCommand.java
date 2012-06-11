@@ -34,7 +34,7 @@ public class StartCommand implements CommandExecutor {
 		GameSession session = plugin.getGameManager().getGameSession(args[0]);
 		if (session == null) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
-					"The specified game does not exist!"));
+					"The specified session does not exist!"));
 			return true;
 		}
 		if (!(session.start())) {

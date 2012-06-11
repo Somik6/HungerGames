@@ -36,7 +36,7 @@ public class AdminCommand implements CommandExecutor {
 		GameSession session = plugin.getGameManager().getGameSession(args[0]);
 		if (session == null) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
-					"The specified game does not exist!"));
+					"The specified session does not exist!"));
 			return true;
 		}
 		Player player = plugin.getServer().getPlayer(args[1]);
