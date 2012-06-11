@@ -32,7 +32,12 @@ public class ReloadCommand implements CommandExecutor {
 		if (args.length != 0) {
 			return false;
 		}
+		if (!(sender.hasPermission(HGPermission.RELOAD.toString()))) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("You don't have permission!"));
+			return true;
+		}
 		ConfigManager.init(plugin);
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Configuration reloaded!"));
 		return true;
 	}
 

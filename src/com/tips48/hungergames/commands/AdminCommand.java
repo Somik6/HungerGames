@@ -33,6 +33,10 @@ public class AdminCommand implements CommandExecutor {
 		if (args.length != 2) {
 			return false;
 		}
+		if (!(sender.hasPermission(HGPermission.ADMIN.toString()))) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("You don't have permission!"));
+			return true;
+		}
 		GameSession session = plugin.getGameManager().getGameSession(args[0]);
 		if (session == null) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(

@@ -31,6 +31,10 @@ public class DeleteCommand implements CommandExecutor {
 		if (!(args.length != 1)) {
 			return false;
 		}
+		if (!(sender.hasPermission(HGPermission.DELETE.toString()))) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("You don't have permission!"));
+			return true;
+		}
 		if (!(plugin.getGameManager().deleteSession(args[0]))) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
 					"Error deleting the session!"));

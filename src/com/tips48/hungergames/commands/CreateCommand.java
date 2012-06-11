@@ -31,6 +31,10 @@ public class CreateCommand implements CommandExecutor {
 		if (!(args.length != 1)) {
 			return false;
 		}
+		if (!(sender.hasPermission(HGPermission.CREATE.toString()))) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("You don't have permission!"));
+			return true;
+		}
 		if (!(plugin.getGameManager().createSession(args[0], null, null))) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
 					"Error creating the session!"));

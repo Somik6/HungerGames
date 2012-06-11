@@ -32,6 +32,10 @@ public class StopCommand implements CommandExecutor {
 		if (args.length != 1) {
 			return false;
 		}
+		if (!(sender.hasPermission(HGPermission.STOP.toString()))) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage("You don't have permission!"));
+			return true;
+		}
 		GameSession session = plugin.getGameManager().getGameSession(args[0]);
 		if (session == null) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
