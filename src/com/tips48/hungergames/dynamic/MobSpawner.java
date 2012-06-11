@@ -6,6 +6,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.config.ConfigManager;
 
 /**
  * Randomly spawns mobs near a player
@@ -14,7 +15,6 @@ import com.tips48.hungergames.HungerGames;
  * 
  */
 public class MobSpawner {
-	private int mobSpawnChance;
 	private Random rand;
 	@SuppressWarnings("unused")
 	private HungerGames plugin;
@@ -27,7 +27,6 @@ public class MobSpawner {
 	 */
 	public MobSpawner(HungerGames plugin) {
 		this.rand = new Random();
-		this.mobSpawnChance = ((rand.nextInt(50) + 25) * 1234);
 		this.plugin = plugin;
 	}
 
@@ -38,6 +37,9 @@ public class MobSpawner {
 	 *            Player who moved
 	 */
 	public void handlePlayerMoveEvent(Player player) {
+		if (!(ConfigManager.RANDOM_MOBS)) {
+			return;
+		}
 		if (shouldSpawnMob(player)) {
 			player.getWorld().spawnCreature(getLocation(player), getEntity());
 		}
@@ -51,7 +53,7 @@ public class MobSpawner {
 	 * @return Mob should be spawned
 	 */
 	private boolean shouldSpawnMob(Player player) {
-		return (rand.nextInt(mobSpawnChance * player.getName().length()) == 0);
+		return (rand.nextInt(ConfigManager.RANDOM_MOBS_CHANCE) == 0);
 	}
 
 	/**

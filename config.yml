@@ -17,4 +17,35 @@ HungerGames:
     - Me
     - MyFriend
     - SomeRandomGuy
-    
+  random:
+# If mobs should be randomly spawned near each player
+    randomMobs: true
+# The chance that a mob will be randomly spawned near a player
+# The check is called every time the player moves, so this should be a big number
+# Ignored if randomMobs is false
+    randomMobsChance: 6000
+# If items should be randomly spawned on each player
+    randomItems: true
+# The chance that a item will be spawned on a player
+# The check is called every time the player moves, so this should be a big number
+# Ignored if randomItems is false
+    randomItemsChance: 7000
+# A list of items that could be spawned on a player
+# This must be four items or you will get an error
+# Each item in the list is in the format id:amount:data
+# Amount is optional, and defaults to 1
+# Data is optional, and defaults to none
+# Example:
+# - 50:2 
+# Gives two torches
+    randomItemsList:
+      - 50:2
+      - 4:4
+      - 17:7
+      - 299:1	 
+# If potions should be randomly spawned on each player
+    randomPotions: true	  
+# The chance that a potion will be spawned on a player
+# The check is called every time the player moves, so this should be a big number
+# Ignored if randomPotions is false
+    randomPotionsChance: 10000

@@ -2,11 +2,11 @@ package com.tips48.hungergames.dynamic;
 
 import java.util.Random;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.config.ConfigManager;
 
 /**
  * Randomly gives items to players
@@ -16,7 +16,6 @@ import com.tips48.hungergames.HungerGames;
  */
 public class ItemGiver {
 	private HungerGames plugin;
-	private int itemGiveChance;
 	private Random rand;
 
 	/**
@@ -28,7 +27,6 @@ public class ItemGiver {
 	public ItemGiver(HungerGames plugin) {
 		this.plugin = plugin;
 		this.rand = new Random();
-		this.itemGiveChance = ((this.rand.nextInt(50) + 25) * 1234);
 	}
 
 	/**
@@ -38,6 +36,9 @@ public class ItemGiver {
 	 *            Player who moved
 	 */
 	public void handlePlayerMoveEvent(Player player) {
+		if (!(ConfigManager.RANDOM_ITEMS)) {
+			return;
+		}
 		if (shouldGiveItem(player.getName())) {
 			ItemStack givenItem = getItem();
 			player.getInventory().addItem(givenItem);
@@ -54,7 +55,7 @@ public class ItemGiver {
 	 * @return Item should be given
 	 */
 	private boolean shouldGiveItem(String name) {
-		return ((rand.nextInt(itemGiveChance) * name.length()) == 0);
+		return ((rand.nextInt(ConfigManager.RANDOM_ITEMS_CHANCE)) == 0);
 	}
 
 	/**
@@ -65,14 +66,14 @@ public class ItemGiver {
 	private ItemStack getItem() {
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
-				return new ItemStack(Material.STONE_SWORD, 1);
+				return ConfigManager.RANDOM_ITEM_LIST.get(0);
 			}
-			return new ItemStack(Material.RAW_BEEF, 1);
+			return ConfigManager.RANDOM_ITEM_LIST.get(1);
 		} else {
 			if (rand.nextBoolean()) {
-				return new ItemStack(Material.COOKED_BEEF, 1);
+				return ConfigManager.RANDOM_ITEM_LIST.get(2);
 			}
-			return new ItemStack(Material.WOOD_SWORD, 1);
+			return ConfigManager.RANDOM_ITEM_LIST.get(3);
 		}
 	}
 }

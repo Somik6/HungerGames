@@ -7,6 +7,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import com.tips48.hungergames.HungerGames;
+import com.tips48.hungergames.config.ConfigManager;
 
 /**
  * Randomly applies potion effects to users
@@ -18,7 +19,6 @@ public class RandomPotions {
 	@SuppressWarnings("unused")
 	private HungerGames plugin;
 	private Random rand;
-	private int applyChance;
 
 	/**
 	 * Creates a new RandomPotions
@@ -29,7 +29,6 @@ public class RandomPotions {
 	public RandomPotions(HungerGames plugin) {
 		this.plugin = plugin;
 		this.rand = new Random();
-		this.applyChance = ((this.rand.nextInt(50) + 25) * 1234);
 	}
 
 	/**
@@ -39,8 +38,11 @@ public class RandomPotions {
 	 *            Player who moved
 	 */
 	public void handlePlayerMoveEvent(Player player) {
+		if (!(ConfigManager.RANDOM_POTIONS)) {
+			return;
+		}
 		if (applyEffect(player)) {
-			player.getActivePotionEffects().clear();
+			//player.getActivePotionEffects().clear(); - the player may have his own potions, we don't want this
 			player.addPotionEffect(getEffect());
 		}
 	}
@@ -53,7 +55,7 @@ public class RandomPotions {
 	 * @return Item should be given
 	 */
 	private boolean applyEffect(Player player) {
-		return (rand.nextInt(applyChance * player.getName().length()) == 0);
+		return (rand.nextInt(ConfigManager.RANDOM_POTIONS_CHANCE) == 0);
 	}
 
 	/**
