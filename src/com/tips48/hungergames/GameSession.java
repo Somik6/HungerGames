@@ -115,7 +115,7 @@ public class GameSession {
 				&& players.size() == ConfigManager.MAX_PLAYERS) {
 			return;
 		}
-		plugin.getBroadcaster().alertEveryone(
+		plugin.getBroadcaster().alertEveryone(this,
 				player + " has joined the Hunger Games!");
 		this.players.add(player);
 	}
@@ -288,7 +288,7 @@ public class GameSession {
 	 * @return If the player is in this session
 	 */
 	public boolean isPlayer(String player) {
-		return players.contains(player);
+		return players.contains(player) || deadPlayers.contains(player);
 	}
 
 	/**
@@ -333,17 +333,15 @@ public class GameSession {
 			return false;
 		}
 		started = true;
-		plugin.getBroadcaster().alertEveryone("The game has been started!");
+		plugin.getBroadcaster().alertEveryone(this,
+				"The game has been started!");
 		if (ConfigManager.BROADCAST_PLAYERS_LEFT) {
-			taskId = plugin.getServer().getScheduler()
+			taskId = plugin
+					.getServer()
+					.getScheduler()
 					.scheduleSyncRepeatingTask(
 							plugin,
-							new Runnable() {
-								public void run() {
-									plugin.getBroadcaster()
-											.alertEveryoneOfRemainingPlayers();
-								}
-							},
+							new PlayersLeftNotifier(plugin, this),
 							ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60,
 							ConfigManager.BROADCAST_PLAYERS_LEFT_EVERY * 20 * 60);
 		}
@@ -360,7 +358,7 @@ public class GameSession {
 			return false;
 		}
 		started = false;
-		plugin.getBroadcaster().alertEveryone("The game is over!");
+		plugin.getBroadcaster().alertEveryone(this, "The game is over!");
 		if (taskId != -1) {
 			plugin.getServer().getScheduler().cancelTask(taskId);
 			taskId = -1;
@@ -379,20 +377,13 @@ public class GameSession {
 		for (Player p : plugin.getServer().getOnlinePlayers()) {
 			p.hidePlayer(player);
 		}
-		final String name = player.getName();
+		String name = player.getName();
 		players.remove(name);
 		deadPlayers.add(name);
-		plugin.getServer().getScheduler()
-				.scheduleSyncDelayedTask(plugin, new Runnable() {
-					@Override
-					public void run() {
-						plugin.getBroadcaster().alertEveryone(
-								name + " has died!");
-						plugin.getBroadcaster()
-								.alertEveryoneOfRemainingPlayers();
-						checkStatus();
-					}
-				}, 2);
+		plugin.getServer()
+				.getScheduler()
+				.scheduleSyncDelayedTask(plugin,
+						new DeadNotifier(plugin, this, name), 2);
 	}
 
 	/**
@@ -401,6 +392,42 @@ public class GameSession {
 	public void checkStatus() {
 		if (players.size() < 2) {
 			stop();
+		}
+	}
+
+	private final static class DeadNotifier implements Runnable {
+		private final HungerGames plugin;
+		private final GameSession session;
+		private final String player;
+
+		public DeadNotifier(HungerGames plugin, GameSession session,
+				String player) {
+			this.plugin = plugin;
+			this.session = session;
+			this.player = player;
+		}
+
+		@Override
+		public void run() {
+			plugin.getBroadcaster().alertEveryone(session,
+					player + " has died!");
+			plugin.getBroadcaster().alertEveryoneOfRemainingPlayers(session);
+			session.checkStatus();
+		}
+	}
+
+	private final static class PlayersLeftNotifier implements Runnable {
+		private final HungerGames plugin;
+		private final GameSession session;
+
+		public PlayersLeftNotifier(HungerGames plugin, GameSession session) {
+			this.plugin = plugin;
+			this.session = session;
+		}
+
+		@Override
+		public void run() {
+			plugin.getBroadcaster().alertEveryoneOfRemainingPlayers(session);
 		}
 	}
 

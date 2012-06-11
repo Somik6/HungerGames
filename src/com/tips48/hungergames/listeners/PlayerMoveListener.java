@@ -36,8 +36,12 @@ public class PlayerMoveListener implements Listener {
 	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerMoveEvent event) {
-		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
+		GameSession session = plugin.getGameManager().getGameSessionOfPlayer(
+				player);
+		if (session == null) {
+			return;
+		}
 		if ((!(session.isStarted())) && session.isPlayer(player)
 				&& EventUtils.isCoarse(event)) {
 			Location from = event.getFrom();

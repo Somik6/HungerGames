@@ -29,8 +29,7 @@ public class Broadcaster {
 	/**
 	 * Alerts all the players of a session of the remaining players
 	 */
-	public void alertEveryoneOfRemainingPlayers() {
-		GameSession session = plugin.getGameManager().getGameSession();
+	public void alertEveryoneOfRemainingPlayers(GameSession session) {
 		String topLine = "Only " + session.getPlayers().size()
 				+ " players remain!";
 
@@ -60,8 +59,7 @@ public class Broadcaster {
 	 * @param message
 	 *            Message to be sent
 	 */
-	public void alertPlayers(String message) {
-		GameSession session = plugin.getGameManager().getGameSession();
+	public void alertPlayers(GameSession session, String message) {
 		for (String player : session.getPlayers()) {
 			Player p = plugin.getServer().getPlayer(player);
 			if (p == null) {
@@ -77,8 +75,7 @@ public class Broadcaster {
 	 * @param message
 	 *            Message to be sent
 	 */
-	public void alertAdmins(String message) {
-		GameSession session = plugin.getGameManager().getGameSession();
+	public void alertAdmins(GameSession session, String message) {
 		for (String player : session.getAdmins()) {
 			Player p = plugin.getServer().getPlayer(player);
 			if (p == null) {
@@ -94,8 +91,7 @@ public class Broadcaster {
 	 * @param message
 	 *            Message to be sent
 	 */
-	public void alertEveryone(String message) {
-		GameSession session = plugin.getGameManager().getGameSession();
+	public void alertEveryone(GameSession session, String message) {
 		for (String player : session.getAllPlayers()) {
 			Player p = plugin.getServer().getPlayer(player);
 			if (p == null) {

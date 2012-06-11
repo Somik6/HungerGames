@@ -35,10 +35,14 @@ public class PlayerQuitListener implements Listener {
 	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerQuitEvent event) {
-		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
+		GameSession session = plugin.getGameManager().getGameSessionOfPlayer(
+				player);
+		if (session == null) {
+			return;
+		}
 		session.removePlayer(player);
-		plugin.getBroadcaster().alertEveryone(
+		plugin.getBroadcaster().alertEveryone(session,
 				player.getName() + " has quit the Hunger Games!");
 	}
 }

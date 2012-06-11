@@ -29,10 +29,15 @@ public class InfoCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
-		if (args.length != 0) {
+		if (args.length != 1) {
 			return false;
 		}
-		GameSession session = plugin.getGameManager().getGameSession();
+		GameSession session = plugin.getGameManager().getGameSession(args[0]);
+		if (session == null) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage(
+					"The specified game does not exist!"));
+			return true;
+		}
 		String admins = Utils.makeReadable(session.getAdmins());
 		if (admins.isEmpty()) {
 			admins = "None";

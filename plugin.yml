@@ -8,25 +8,25 @@ commands:
         description: Manually starts the server
         permission: HungerGames.start
         permission-message: You don't have permission!
-        usage: Wrong syntax! Try /<command>
+        usage: Wrong syntax! Try /<command> <session>
     hgstop:
         description: Manually stops the server
         permission: HungerGames.stop
         permission-message: You don't have permission!
-        usage: Wrong syntax! Try /<command>
+        usage: Wrong syntax! Try /<command> <session>
     hginfo:
         description: Displays info about a session
-        usage: Wrong syntax! Try /<command>
+        usage: Wrong syntax! Try /<command> <session>
     hgreload:
         description: Reloads the configuration
         permission: HungerGames.reload
         permission-message: You don't have permission!
-        usage: Wrong syntax! Try /<command>
+        usage: Wrong syntax! Try /<command> <session>
     hgadmin:
         description: Promotes a player to administrator
         permission: HungerGames.admin
         permission-message: You don't have permission!
-        usage: Wrong syntax! Try /<command> <player>
+        usage: Wrong syntax! Try /<command> <session> <player>
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command

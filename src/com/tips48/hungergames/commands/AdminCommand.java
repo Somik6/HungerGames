@@ -30,16 +30,21 @@ public class AdminCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
-		if (args.length != 1) {
+		if (args.length != 2) {
 			return false;
 		}
-		Player player = plugin.getServer().getPlayer(args[0]);
+		GameSession session = plugin.getGameManager().getGameSession(args[0]);
+		if (session == null) {
+			sender.sendMessage(plugin.getBroadcaster().styleMessage(
+					"The specified game does not exist!"));
+			return true;
+		}
+		Player player = plugin.getServer().getPlayer(args[1]);
 		if (player == null) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
 					"The specified player was not online!"));
 			return true;
 		}
-		GameSession session = plugin.getGameManager().getGameSession();
 		session.addAdmin(player);
 		return true;
 	}

@@ -36,7 +36,11 @@ public class BlockPlaceListener implements Listener {
 	@EventHandler(ignoreCancelled = true)
 	public void handle(BlockPlaceEvent event) {
 		Player player = event.getPlayer();
-		GameSession session = plugin.getGameManager().getGameSession();
+		GameSession session = plugin.getGameManager().getGameSessionOfPlayer(
+				player);
+		if (session == null) {
+			return;
+		}
 		if (!(session.isStarted()) && !(session.isAdmin(player))) {
 			event.setCancelled(true);
 		}

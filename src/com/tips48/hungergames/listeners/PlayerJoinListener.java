@@ -17,6 +17,7 @@ import com.tips48.hungergames.config.ConfigManager;
  * 
  * @author tips48
  */
+@SuppressWarnings("unused")
 public class PlayerJoinListener implements Listener {
 	private final HungerGames plugin;
 
@@ -38,20 +39,19 @@ public class PlayerJoinListener implements Listener {
 	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerJoinEvent event) {
-		GameSession session = plugin.getGameManager().getGameSession();
-		Player player = event.getPlayer();
-		event.setJoinMessage("");
-		if (ConfigManager.ADMINS.contains(player.getName())) {
-			session.addAdmin(player);
-		} else {
-			session.addPlayer(player);
-			player.teleport(new Location(player.getWorld(), 0, player
-					.getWorld().getHighestBlockYAt(0, 0), 0)); // Temporary
-			player.getInventory().clear();
-			player.getInventory().addItem(new ItemStack(Material.STICK, 1));
-			player.getInventory().addItem(
-					new ItemStack(Material.ROTTEN_FLESH, 2));
-		}
+		/*
+		 * Player player = event.getPlayer(); GameSession session =
+		 * plugin.getGameManager().getGameSessionOfPlayer(player); if (session
+		 * == null) { return; } event.setJoinMessage(""); if
+		 * (ConfigManager.ADMINS.contains(player.getName())) {
+		 * session.addAdmin(player); } else { session.addPlayer(player);
+		 * player.teleport(new Location(player.getWorld(), 0, player
+		 * .getWorld().getHighestBlockYAt(0, 0), 0)); // Temporary
+		 * player.getInventory().clear(); player.getInventory().addItem(new
+		 * ItemStack(Material.STICK, 1)); player.getInventory().addItem( new
+		 * ItemStack(Material.ROTTEN_FLESH, 2)); }
+		 */
+		// TODO this needs to be rethought
 	}
 
 }

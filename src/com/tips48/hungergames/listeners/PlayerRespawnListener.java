@@ -34,8 +34,12 @@ public class PlayerRespawnListener implements Listener {
 	 */
 	@EventHandler(ignoreCancelled = true)
 	public void handle(PlayerRespawnEvent event) {
-		GameSession session = plugin.getGameManager().getGameSession();
 		Player player = event.getPlayer();
+		GameSession session = plugin.getGameManager().getGameSessionOfPlayer(
+				player);
+		if (session == null) {
+			return;
+		}
 		if (session.isStarted() && session.isPlayer(player)) {
 			session.onPlayerRespawn(player);
 		}
