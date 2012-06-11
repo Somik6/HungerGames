@@ -4,9 +4,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import com.tips48.hungergames.config.ConfigManager;
+import com.tips48.hungergames.utils.EventUtils;
 
 /**
  * Stores information about one session of
@@ -121,6 +124,13 @@ public class GameSession {
 		plugin.getBroadcaster().alertEveryone(this,
 				player + " has joined the Hunger Games!");
 		this.players.add(player);
+		Player p = plugin.getServer().getPlayer(player);
+		if (p == null) {
+			return;
+		}
+		p.teleport(EventUtils.getRandomSpawnLocation(p));
+		p.getInventory().clear();
+		p.getInventory().addItem(new ItemStack(Material.STICK, 1));
 	}
 
 	/**

@@ -23,7 +23,6 @@ import com.tips48.hungergames.listeners.BlockBreakListener;
 import com.tips48.hungergames.listeners.BlockPlaceListener;
 import com.tips48.hungergames.listeners.PlayerChatListener;
 import com.tips48.hungergames.listeners.PlayerDamageListener;
-import com.tips48.hungergames.listeners.PlayerJoinListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
 import com.tips48.hungergames.listeners.PlayerMoveListener;
 import com.tips48.hungergames.listeners.PlayerQuitListener;
@@ -39,7 +38,6 @@ public class HungerGames extends JavaPlugin {
 	// Game manager
 	private GameManager gameManager;
 	// Listeners
-	private PlayerJoinListener joinListener;
 	private PlayerMoveListener moveListener;
 	private PlayerQuitListener quitListener;
 	private PlayerKickListener kickListener;
@@ -78,7 +76,6 @@ public class HungerGames extends JavaPlugin {
 		broadcaster = new Broadcaster(this);
 		randomPotions = new RandomPotions(this);
 
-		joinListener = new PlayerJoinListener(this);
 		moveListener = new PlayerMoveListener(this);
 		quitListener = new PlayerQuitListener(this);
 		kickListener = new PlayerKickListener(this);
@@ -116,7 +113,6 @@ public class HungerGames extends JavaPlugin {
 	private void registerEvents() {
 		PluginManager manager = this.getServer().getPluginManager();
 
-		manager.registerEvents(joinListener, this);
 		manager.registerEvents(moveListener, this);
 		manager.registerEvents(quitListener, this);
 		manager.registerEvents(kickListener, this);
