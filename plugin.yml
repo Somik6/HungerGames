@@ -22,6 +22,11 @@ commands:
         permission: HungerGames.reload
         permission-message: You don't have permission!
         usage: Wrong syntax! Try /<command>
+    hgadmin:
+        description: Promotes a player to administrator
+        permission: HungerGames.admin
+        permission-message: You don't have permission!
+        usage: Wrong syntax! Try /<command> <player>
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command
@@ -29,9 +34,12 @@ permissions:
         description: Access to the /hgstop command
     HungerGames.reload:
         description: Access to the /hgreload command
+    HungerGames.admin:
+        description: Access to the /hgadmin command
     HungerGames.*:
         description: Access to all the Hunger Games commands
         children:
             HungerGames.start: true
             HungerGames.stop: true
             HungerGames.reload: true
+            HungerGames.admin: true

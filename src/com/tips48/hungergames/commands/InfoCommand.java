@@ -50,5 +50,4 @@ public class InfoCommand implements CommandExecutor {
 		sender.sendMessage(plugin.getBroadcaster().styleMessage("Players: " + alive + ", " + dead));
 		return true;
 	}
-
 }

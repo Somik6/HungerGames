@@ -181,6 +181,9 @@ public class GameSession {
 	 *            Player to add
 	 */
 	public void addAdmin(String admin) {
+		if (players.contains(admin)) {
+			players.remove(admin);
+		}
 		this.admins.add(admin);
 	}
 
