@@ -61,7 +61,7 @@ public class CreateCommand implements CommandExecutor {
 				sender.sendMessage(plugin.getBroadcaster().styleMessage("Right-click on the center of where you want players to spawn with a diamond hoe"));
 			} else {
 				sender.sendMessage(plugin.getBroadcaster().styleMessage("Right-click on each of the spawn points with a diamond hoe"));
-				sender.sendMessage(plugin.getBroadcaster().styleMessage("When your done, type /hgfinish " + args[0]));
+				sender.sendMessage(plugin.getBroadcaster().styleMessage("When your done, type /hgfinish"));
 			}
 		}
 		return true;

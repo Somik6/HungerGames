@@ -37,6 +37,7 @@ public class HelpCommand implements CommandExecutor {
 		}
 		if (sender.hasPermission("HungerGames.create")) {
 			sender.sendMessage("/hgcreate <name> - Creates a session");
+			sender.sendMessage("/hgfinish - Finishes a created session");
 		}
 		if (sender.hasPermission("HungerGames.delete")) {
 			sender.sendMessage("/hgdelete <name> - Deletes a session");
