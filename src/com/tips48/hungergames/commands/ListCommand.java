@@ -1,5 +1,7 @@
 package com.tips48.hungergames.commands;
 
+import java.util.Set;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,10 +35,15 @@ public class ListCommand implements CommandExecutor {
 		if (!(args.length == 0)) {
 			return false;
 		}
-		sender.sendMessage(plugin.getBroadcaster().styleMessage("Sesssions:"));
 		sender.sendMessage(plugin.getBroadcaster().styleMessage(
 				"Red = started;Green = not started"));
-		for (GameSession session : plugin.getGameManager().getSessions()) {
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Sesssions:"));
+		Set<GameSession> sessions = plugin.getGameManager().getSessions();
+		if (sessions.isEmpty()) {
+			sender.sendMessage("None!");
+			return true;
+		}
+		for (GameSession session : sessions) {
 			ChatColor color = session.isStarted() ? ChatColor.RED
 					: ChatColor.GREEN;
 			sender.sendMessage(color + session.getName());
