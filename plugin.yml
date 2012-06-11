@@ -27,6 +27,19 @@ commands:
         permission: HungerGames.admin
         permission-message: You don't have permission!
         usage: Wrong syntax! Try /<command> <session> <player>
+    hglist:
+        description: Lists all currently created sessions
+        usage: Wrong syntax! Try /<command>
+    hgcreate:
+        description: Creates a session
+        permission: HungerGames.create
+        permission-message: You don't have permission!
+        usage: Wrong syntax! Try /<command> <name>
+    hgdelete:
+        description: Deletes a session
+        permission: HungerGames.delete
+        permission-message: You don't have permission!
+        usage: Wrong syntax! Try /<command> <name>
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command
@@ -36,6 +49,10 @@ permissions:
         description: Access to the /hgreload command
     HungerGames.admin:
         description: Access to the /hgadmin command
+    HungerGames.create:
+        description: Access to the /hgcreate command
+    HungerGames.delete:
+        description: Access to the /hgdelete command
     HungerGames.*:
         description: Access to all the Hunger Games commands
         children:
@@ -43,3 +60,5 @@ permissions:
             HungerGames.stop: true
             HungerGames.reload: true
             HungerGames.admin: true
+            HungerGames.create: true
+            HungerGames.delete: true

@@ -37,8 +37,11 @@ public class GameManager {
 	 * @param players
 	 *            Players in the session
 	 */
-	public void createSession(String name, Set<String> admins,
+	public boolean createSession(String name, Set<String> admins,
 			Set<String> players) {
+		if (getGameSession(name) != null) {
+			return false;
+		}
 		GameSession session = new GameSession(plugin, name);
 		if (admins != null) {
 			session.addAllAdmins(admins);
@@ -47,6 +50,22 @@ public class GameManager {
 			session.addAllPlayers(admins);
 		}
 		sessions.add(session);
+		return true;
+	}
+	
+	/**
+	 * Deletes a session
+	 * @param name Session to delete
+	 * @return If successful
+	 */
+	public boolean deleteSession(String name) {
+		GameSession session = getGameSession(name);
+		if (session == null) {
+			return false;
+		}
+		session.stop();
+		sessions.remove(session);
+		return true;
 	}
 
 	/**
@@ -90,6 +109,10 @@ public class GameManager {
 			}
 		}
 		return null;
+	}
+
+	public Set<GameSession> getSessions() {
+		return sessions;
 	}
 
 }
