@@ -45,11 +45,11 @@ public class PlayerJoinListener implements Listener {
 		 * == null) { return; } event.setJoinMessage(""); if
 		 * (ConfigManager.ADMINS.contains(player.getName())) {
 		 * session.addAdmin(player); } else { session.addPlayer(player);
-		 * player.teleport(new Location(player.getWorld(), 0, player
-		 * .getWorld().getHighestBlockYAt(0, 0), 0)); // Temporary
-		 * player.getInventory().clear(); player.getInventory().addItem(new
-		 * ItemStack(Material.STICK, 1)); player.getInventory().addItem( new
-		 * ItemStack(Material.ROTTEN_FLESH, 2)); }
+		 * player.teleport(EventUtils.getRandomSpawnLocation(player)); //
+		 * Temporary player.getInventory().clear();
+		 * player.getInventory().addItem(new ItemStack(Material.STICK, 1));
+		 * player.getInventory().addItem( new ItemStack(Material.ROTTEN_FLESH,
+		 * 2)); }
 		 */
 		// TODO this needs to be rethought
 	}

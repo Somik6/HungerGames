@@ -1,6 +1,10 @@
 package com.tips48.hungergames.utils;
 
+import java.util.Random;
+
 import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 /**
@@ -29,6 +33,23 @@ public class EventUtils {
 		double toX = to.getX();
 		double toZ = to.getZ();
 		return fromX != toX || fromZ != toZ;
+	}
+
+	/**
+	 * Returns a location to randomly spawn the player at.
+	 * 
+	 * @param player
+	 *            Player to teleport.
+	 * @return The location
+	 */
+	public static Location getRandomSpawnLocation(Player player) {
+		World world = player.getWorld();
+		Random rand = new Random();
+		int addX = rand.nextInt(player.getName().length() * 2), addZ = rand
+				.nextInt(player.getName().length() * 2);
+
+		return new Location(world, addX, world.getHighestBlockAt(addX, addZ)
+				.getY(), addZ);
 	}
 
 }

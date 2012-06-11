@@ -395,11 +395,27 @@ public class GameSession {
 		}
 	}
 
+	/**
+	 * Notifies all the players of who just died
+	 * 
+	 * @author tips48
+	 * 
+	 */
 	private final static class DeadNotifier implements Runnable {
 		private final HungerGames plugin;
 		private final GameSession session;
 		private final String player;
 
+		/**
+		 * Creates a new DeadNotifier
+		 * 
+		 * @param plugin
+		 *            Plugin instance
+		 * @param session
+		 *            Session instance
+		 * @param player
+		 *            Player to notify
+		 */
 		public DeadNotifier(HungerGames plugin, GameSession session,
 				String player) {
 			this.plugin = plugin;
@@ -416,10 +432,24 @@ public class GameSession {
 		}
 	}
 
+	/**
+	 * Notifies all the players of who is dead
+	 * 
+	 * @author tips48
+	 * 
+	 */
 	private final static class PlayersLeftNotifier implements Runnable {
 		private final HungerGames plugin;
 		private final GameSession session;
 
+		/**
+		 * Creates a new PlayerLeftNotifier
+		 * 
+		 * @param plugin
+		 *            Plugin instance
+		 * @param session
+		 *            Session instance
+		 */
 		public PlayersLeftNotifier(HungerGames plugin, GameSession session) {
 			this.plugin = plugin;
 			this.session = session;
