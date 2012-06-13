@@ -52,6 +52,8 @@ public class InfoCommand implements CommandExecutor {
 		}
 		sender.sendMessage(plugin.getBroadcaster().styleMessage(
 				session.getName()));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Constructed: " + session.isConstructed()));
+		sender.sendMessage(plugin.getBroadcaster().styleMessage("Creator: " + session.getCreator()));
 		sender.sendMessage(plugin.getBroadcaster().styleMessage(
 				"Admins: " + admins));
 		sender.sendMessage(plugin.getBroadcaster().styleMessage(

@@ -46,7 +46,7 @@ public class PlayerDamageListener implements Listener {
 		if (session == null) {
 			return;
 		}
-		if (!(session.isStarted()) && !(session.isAdmin(player))) {
+		if ((!(session.isStarted())) && (!(session.isAdmin(player)))) {
 			event.setCancelled(true);
 		}
 	}

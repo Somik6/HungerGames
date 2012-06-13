@@ -45,7 +45,7 @@ public class JoinCommand implements CommandExecutor {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
 					"You are already in a session!"));
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
-					"You can leave with /hgleave " + session.getName()));
+					"You can leave with /hgleave"));
 			return true;
 		}
 		session = plugin.getGameManager().getGameSession(args[0]);

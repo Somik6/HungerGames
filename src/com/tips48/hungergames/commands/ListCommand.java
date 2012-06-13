@@ -44,6 +44,9 @@ public class ListCommand implements CommandExecutor {
 			return true;
 		}
 		for (GameSession session : sessions) {
+			if (!(session.isConstructed())) {
+		        continue;
+			}
 			ChatColor color = session.isStarted() ? ChatColor.RED
 					: ChatColor.GREEN;
 			sender.sendMessage(color + session.getName());

@@ -28,7 +28,7 @@ public class DeleteCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command,
 			String label, String[] args) {
-		if (!(args.length != 1)) {
+		if (args.length != 1) {
 			return false;
 		}
 		if (!(sender.hasPermission(HGPermission.DELETE.toString()))) {

@@ -32,6 +32,8 @@ public class GameManager {
 	 * 
 	 * @param name
 	 *            Name of the session
+	 * @param creator
+	 *            Player who created the session
 	 * @param admins
 	 *            Admins in the session
 	 * @param players

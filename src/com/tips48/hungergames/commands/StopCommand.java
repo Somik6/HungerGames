@@ -45,6 +45,7 @@ public class StopCommand implements CommandExecutor {
 		if (!(session.stop())) {
 			sender.sendMessage(plugin.getBroadcaster().styleMessage(
 					"Failed to stop the game!"));
+			return true;
 		}
 		sender.sendMessage(plugin.getBroadcaster().styleMessage(
 				"The game was stopped!"));

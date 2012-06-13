@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -134,16 +135,6 @@ public class GameSession {
 		}
 		return result;
 	}
-
-	/**
-	 * Adds a player to the session
-	 * 
-	 * @param player
-	 *            Player to add
-	 */
-	public void addPlayer(Player player) {
-		addPlayer(player.getName());
-	}
 	
 	/**
 	 * Gets if the session is ready for joining
@@ -153,8 +144,22 @@ public class GameSession {
 		return constructed;
 	}
 	
+	/**
+	 * Sets if the session is constructed or not
+	 * @param constructed If constructed
+	 */
 	public void setConstructed(boolean constructed) {
 		this.constructed = constructed;
+	}
+
+	/**
+	 * Adds a player to the session
+	 * 
+	 * @param player
+	 *            Player to add
+	 */
+	public void addPlayer(Player player) {
+		addPlayer(player.getName());
 	}
 
 	/**
@@ -199,6 +204,7 @@ public class GameSession {
 				}
 			}
 		}
+		p.setGameMode(GameMode.SURVIVAL);
 		if (ConfigManager.CLEAR_INVENTORY) {
 			p.getInventory().clear();
 		}
@@ -223,6 +229,7 @@ public class GameSession {
 	 */
 	public void removePlayer(String player) {
 		this.players.remove(player);
+		checkStatus();
 	}
 
 	/**
@@ -450,6 +457,9 @@ public class GameSession {
 		if (taskId != -1) {
 			plugin.getServer().getScheduler().cancelTask(taskId);
 			taskId = -1;
+		}
+		for (String player : players) {
+			removePlayer(player);
 		}
 		return true;
 	}

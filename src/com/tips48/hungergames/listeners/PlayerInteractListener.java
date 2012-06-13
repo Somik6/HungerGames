@@ -1,5 +1,6 @@
 package com.tips48.hungergames.listeners;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -60,7 +61,11 @@ public class PlayerInteractListener implements Listener {
 		if (session == null) {
 			return;
 		}
-		session.addSpawnLocation(b.getLocation());
+		Location bLocation = b.getLocation();
+		bLocation.setY(bLocation.getY() + 1);
+		bLocation.setX(bLocation.getX() + 0.5);
+		bLocation.setZ(bLocation.getZ() + 0.5);
+		session.addSpawnLocation(bLocation);
 		player.sendMessage(plugin.getBroadcaster().styleMessage(
 				"Location added!"));
 	}

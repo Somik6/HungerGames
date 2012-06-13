@@ -24,6 +24,7 @@ import com.tips48.hungergames.listeners.BlockBreakListener;
 import com.tips48.hungergames.listeners.BlockPlaceListener;
 import com.tips48.hungergames.listeners.PlayerChatListener;
 import com.tips48.hungergames.listeners.PlayerDamageListener;
+import com.tips48.hungergames.listeners.PlayerInteractListener;
 import com.tips48.hungergames.listeners.PlayerKickListener;
 import com.tips48.hungergames.listeners.PlayerMoveListener;
 import com.tips48.hungergames.listeners.PlayerQuitListener;
@@ -45,6 +46,7 @@ public class HungerGames extends JavaPlugin {
 	private PlayerRespawnListener respawnListener;
 	private PlayerChatListener chatListener;
 	private PlayerDamageListener damageListener;
+	private PlayerInteractListener interactListener;
 
 	private BlockBreakListener breakListener;
 	private BlockPlaceListener placeListener;
@@ -83,6 +85,7 @@ public class HungerGames extends JavaPlugin {
 		respawnListener = new PlayerRespawnListener(this);
 		chatListener = new PlayerChatListener(this);
 		damageListener = new PlayerDamageListener(this);
+		interactListener = new PlayerInteractListener(this);
 
 		breakListener = new BlockBreakListener(this);
 		placeListener = new BlockPlaceListener(this);
@@ -121,6 +124,7 @@ public class HungerGames extends JavaPlugin {
 		manager.registerEvents(respawnListener, this);
 		manager.registerEvents(chatListener, this);
 		manager.registerEvents(damageListener, this);
+		manager.registerEvents(interactListener, this);
 
 		manager.registerEvents(placeListener, this);
 		manager.registerEvents(breakListener, this);

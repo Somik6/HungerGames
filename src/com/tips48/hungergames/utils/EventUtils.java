@@ -52,21 +52,21 @@ public class EventUtils {
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
 				Location result = new Location(world, location.getX() + x, 0, location.getZ() + z);
-				result.setY(world.getHighestBlockYAt(result));
+				result.setY(world.getHighestBlockYAt(result) + 1);
 				return result;
 			} else {
 				Location result = new Location(world, location.getX() - x, 0, location.getZ() + z);
-				result.setY(world.getHighestBlockYAt(result));
+				result.setY(world.getHighestBlockYAt(result) + 1);
 				return result;
 			}
 		} else {
 			if (rand.nextBoolean()) {
 				Location result = new Location(world, location.getX() + x, 0, location.getZ() - z);
-				result.setY(world.getHighestBlockYAt(result));
+				result.setY(world.getHighestBlockYAt(result) + 1);
 				return result;
 			} else {
 				Location result = new Location(world, location.getX() - x, 0, location.getZ() - z);
-				result.setY(world.getHighestBlockYAt(result));
+				result.setY(world.getHighestBlockYAt(result) + 1);
 				return result;
 			}
 		}
