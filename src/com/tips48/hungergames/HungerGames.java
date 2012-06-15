@@ -7,6 +7,8 @@ import com.tips48.hungergames.commands.AdminCommand;
 import com.tips48.hungergames.commands.CreateCommand;
 import com.tips48.hungergames.commands.DeleteCommand;
 import com.tips48.hungergames.commands.FinishCommand;
+import com.tips48.hungergames.commands.ForceJoinCommand;
+import com.tips48.hungergames.commands.ForceLeaveCommand;
 import com.tips48.hungergames.commands.HelpCommand;
 import com.tips48.hungergames.commands.HungerGamesCommand;
 import com.tips48.hungergames.commands.InfoCommand;
@@ -64,6 +66,8 @@ public class HungerGames extends JavaPlugin {
 	private LeaveCommand leaveCommand;
 	private HungerGamesCommand hgCommand;
 	private HelpCommand helpCommand;
+	private ForceJoinCommand forceJoinCommand;
+	private ForceLeaveCommand forceLeaveCommand;
 	// Various utils
 	private ItemGiver itemGiver;
 	private MobSpawner mobSpawner;
@@ -103,6 +107,8 @@ public class HungerGames extends JavaPlugin {
 		leaveCommand = new LeaveCommand(this);
 		hgCommand = new HungerGamesCommand(this);
 		helpCommand = new HelpCommand(this);
+		forceJoinCommand = new ForceJoinCommand(this);
+		forceLeaveCommand = new ForceLeaveCommand(this);
 	}
 
 	@Override
@@ -147,6 +153,8 @@ public class HungerGames extends JavaPlugin {
 		getCommand("hgleave").setExecutor(leaveCommand);
 		getCommand("hg").setExecutor(hgCommand);
 		getCommand("hghelp").setExecutor(helpCommand);
+		getCommand("hgforcejoin").setExecutor(forceJoinCommand);
+		getCommand("hgforceleave").setExecutor(forceLeaveCommand);
 	}
 
 	@Override

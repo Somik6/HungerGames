@@ -32,14 +32,14 @@ public class HelpCommand implements CommandExecutor {
 			return false;
 		}
 		sender.sendMessage(plugin.getBroadcaster().styleMessage("Commands: "));
-		if (sender.hasPermission("HungerGames.admin")) {
+		if (sender.hasPermission(HGPermission.ADMIN.toString())) {
 			sender.sendMessage("/hgadmin <session> <player> - Promotes a player to admin");
 		}
-		if (sender.hasPermission("HungerGames.create")) {
+		if (sender.hasPermission(HGPermission.CREATE.toString())) {
 			sender.sendMessage("/hgcreate <name> - Creates a session");
 			sender.sendMessage("/hgfinish - Finishes a created session");
 		}
-		if (sender.hasPermission("HungerGames.delete")) {
+		if (sender.hasPermission(HGPermission.DELETE.toString())) {
 			sender.sendMessage("/hgdelete <name> - Deletes a session");
 		}
 		sender.sendMessage("/hghelp - Shows this information");
@@ -48,14 +48,20 @@ public class HelpCommand implements CommandExecutor {
 		sender.sendMessage("/hgjoin <session> - Joins a session");
 		sender.sendMessage("/hgleave- Leaves a session");
 		sender.sendMessage("/hglist - Lists all the currently created sessions");
-		if (sender.hasPermission("HungerGames.reload")) {
+		if (sender.hasPermission(HGPermission.RELOAD.toString())) {
 			sender.sendMessage("/hgreload - Reloads the configuration");
 		}
-		if (sender.hasPermission("HungerGames.start")) {
+		if (sender.hasPermission(HGPermission.START.toString())) {
 			sender.sendMessage("/hgstart <session> - Starts a session");
 		}
-		if (sender.hasPermission("HungerGames.stop")) {
+		if (sender.hasPermission(HGPermission.STOP.toString())) {
 			sender.sendMessage("/hgstop <session> - Stops a session");
+		}
+		if (sender.hasPermission(HGPermission.FORCE_JOIN.toString())) {
+			sender.sendMessage("/hgforcejoin <session> <player> - Forces a player to join a session");
+		}
+		if (sender.hasPermission(HGPermission.FORCE_LEAVE.toString())) {
+			sender.sendMessage("/hgforcequit <player> - Forces a player to leave the session they are currently in");
 		}
 		return true;
 	}

@@ -24,7 +24,10 @@ public enum HGPermission {
 	/**
 	 * Permisson for the /hgstop command
 	 */
-	STOP("HungerGames.stop");
+	STOP("HungerGames.stop"),
+	FORCE_JOIN("HungerGames.forcejoin"),
+	FORCE_LEAVE("HungerGames.forceleave");
+	
 	
 	private final String permission;
 	

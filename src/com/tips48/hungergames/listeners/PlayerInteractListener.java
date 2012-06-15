@@ -43,6 +43,13 @@ public class PlayerInteractListener implements Listener {
 		Action action = event.getAction();
 		Player player = event.getPlayer();
 		Block b = event.getClickedBlock();
+		GameSession session = plugin.getGameManager().getGameSessionOfPlayer(player);
+		if (session != null) {
+			if (session.getDeadPlayers().contains(player.getName())) {
+				event.setCancelled(true);
+				return;
+			}
+		}
 		if (!(event.hasBlock())) {
 			return;
 		}
@@ -56,7 +63,7 @@ public class PlayerInteractListener implements Listener {
 		if (!(mat == Material.DIAMOND_HOE)) {
 			return;
 		}
-		GameSession session = plugin.getGameManager().getConstructedSession(
+		session = plugin.getGameManager().getConstructedSession(
 				player);
 		if (session == null) {
 			return;

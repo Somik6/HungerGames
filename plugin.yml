@@ -44,6 +44,13 @@ commands:
     hghelp:
         description: Displays information about the HungerGames commands
         usage: Wrong syntax! Try /<command>
+    hgforcejoin:
+        description: Forces a player to join a session
+        usage: Wrong syntax! Try /<command> <session> <player>
+    hgforceleave:
+        description: Forces a player to leave the session they are currently in
+        usage: Wrong syntax! Try /<command> <player>
+         
 permissions:
     HungerGames.start:
         description: Access to the /hgstart command
@@ -57,6 +64,10 @@ permissions:
         description: Access to the /hgcreate command
     HungerGames.delete:
         description: Access to the /hgdelete command
+    HungerGames.forcejoin:
+        description: Access to the /hgforcejoin command
+    HungerGames.forceleave:
+        description: Access to the /hgforceleave command
     HungerGames.*:
         description: Access to all the Hunger Games commands
         children:
@@ -66,3 +77,5 @@ permissions:
             HungerGames.admin: true
             HungerGames.create: true
             HungerGames.delete: true
+            HungerGames.forcejoin: true
+            HungerGames.forceleave: true

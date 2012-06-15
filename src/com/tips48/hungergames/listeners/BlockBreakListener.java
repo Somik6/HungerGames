@@ -44,7 +44,7 @@ public class BlockBreakListener implements Listener {
 		if (!(session.isStarted()) && !(session.isAdmin(player))) {
 			event.setCancelled(true);
 		}
-		if (session.getDeadPlayers().contains(player)) {
+		if (session.isStarted() && session.getDeadPlayers().contains(player)) {
 			event.setCancelled(true);
 		}
 	}

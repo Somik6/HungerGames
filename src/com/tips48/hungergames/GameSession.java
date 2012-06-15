@@ -173,7 +173,7 @@ public class GameSession {
 				&& players.size() == ConfigManager.MAX_PLAYERS) {
 			return;
 		}
-		if (ConfigManager.ADMINS.contains(player)) {
+		if (ConfigManager.ADMINS.contains(player) || player.equalsIgnoreCase(creator)) {
 			addAdmin(player);
 			return;
 		}
@@ -427,6 +427,15 @@ public class GameSession {
 		if (players.size() < 2) {
 			return false;
 		}
+		for (String player : getAllPlayers()) {
+			Player p = plugin.getServer().getPlayer(player);
+			if (p == null) {
+				continue;
+			}
+			p.setExhaustion(0F);
+			p.setHealth(20);
+			p.setFoodLevel(20);
+		}
 		started = true;
 		plugin.getBroadcaster().alertEveryone(this,
 				"The game has been started!");
@@ -483,7 +492,9 @@ public class GameSession {
 	public void onPlayerRespawn(Player player) {
 		player.setAllowFlight(true);
 		for (Player p : plugin.getServer().getOnlinePlayers()) {
-			p.hidePlayer(player);
+			if (!(admins.contains(p.getName()))) {
+				p.hidePlayer(player);
+			}
 		}
 		String name = player.getName();
 		players.remove(name);
