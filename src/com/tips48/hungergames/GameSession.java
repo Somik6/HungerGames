@@ -458,7 +458,17 @@ public class GameSession {
 			plugin.getServer().getScheduler().cancelTask(taskId);
 			taskId = -1;
 		}
-		for (String player : players) {
+		for (String player : deadPlayers) {
+			Player p = plugin.getServer().getPlayer(player);
+			if (p == null) {
+				continue;
+			}
+			p.setAllowFlight(false);
+			for (Player ply : plugin.getServer().getOnlinePlayers()) {
+				p.showPlayer(ply);
+			}
+		}
+		for (String player : getAllPlayers()) {
 			removePlayer(player);
 		}
 		return true;
