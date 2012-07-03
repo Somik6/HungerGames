@@ -31,7 +31,7 @@ public class Broadcaster {
 	 */
 	public void alertEveryoneOfRemainingPlayers(GameSession session) {
 		String topLine = "Only " + session.getPlayers().size()
-				+ " players remain!";
+				+ " player(s) remain!";
 
 		String bottomLine = "They are: "
 				+ Utils.makeReadable(session.getPlayers());
