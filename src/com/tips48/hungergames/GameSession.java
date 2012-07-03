@@ -209,6 +209,11 @@ public class GameSession {
 			p.getInventory().clear();
 		}
 		p.getInventory().addItem(new ItemStack(Material.STICK, 1));
+		if (ConfigManager.MAX_PLAYERS != -1) {
+		    if (ConfigManager.START_ON_FULL && players.size() == ConfigManager.MAX_PLAYERS) {
+		        start();
+		    }
+		}
 	}
 
 	/**
