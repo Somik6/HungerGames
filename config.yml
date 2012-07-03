@@ -7,6 +7,8 @@ HungerGames:
 # Maximum players before players can't join the game
 # -1 for no maximum
   maxPlayers: 7
+# If the session should be started when it's full
+  startOnFull: true
 # If how many players left should be broadcasted at certain intervals
   broadcastPlayersLeft: true
 # How often how many players left should be broadcasted, in minutes
